@@ -15,3 +15,24 @@ menuToggle.addEventListener('click', () => {
     }
 
 });
+
+const correction = document.getElementById('correction');
+
+const corUrl = document.getElementById('cor_url');
+
+correction.style.display = 'none';
+
+cor_url.style.display = 'none';
+
+correction.addEventListener('click', () => {
+
+    if (corUrl.style.display == 'block') {
+
+        corUrl.style.display = 'none';
+
+    } else {
+
+        corUrl.style.display = 'block';
+
+    }
+});
