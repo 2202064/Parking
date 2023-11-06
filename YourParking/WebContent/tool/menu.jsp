@@ -10,6 +10,7 @@
 <body>
 <h1>Your Parking</h1>
 <input type="checkbox" id="menu-toggle">
+<input type="checkbox" id="correction">
 <div id="menu">
 <%
 User user = (User)session.getAttribute("user");
@@ -26,16 +27,13 @@ if (user != null){
 		<!-- 利用者ログイン状態 -->
 		<ul>
 		<li><a href="#">登録情報修正</a></li>
-		<li><div class="cor-container">
-			<input type="checkbox" id="correction"><a href="#">車情報修正</a>
-  			<!-- 車情報修正が押下された場合 -->
-  			<ul>
-  			<li><a href="#" id="cor-link" class="hidden">車追加</a></li>
-  			<li><a href="#" id="cor-link" class="hidden">車変更</a></li>
-  			<li><a href="#" id="cor-link" class="hidden">車削除</a></li>
-  			</ul>
-		</div></li>
-		<li><a href="#">ログアウト</a></li>
+		<li><label for="correction" class="cor">車情報修正▽</label>
+		<ul id="cor_url">
+		<li><a href="add-car">車追加</a></li>
+		<li><a href="upd-car">車更新</a></li>
+		<li><a href="del-car">車削除</a></li>
+		</ul></li>
+		<li><a href="#">ログアウト</a>
 		</ul>
 	<%} %>
 <%}else{ %>
