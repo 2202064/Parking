@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <p>所有車設定</p>
 <p>指定している車情報 車載物</p>
-<form action="syoyusya_kakunin.jsp" method="post" onsubmit="return validateForm()">
+<form action="ownedcar_out.jsp" method="post" onsubmit="return validateForm()">
   <p>車高: <input type="text" name="VehicleHeight">m <input type="text" name="VehicleHeight1">m</p>
   <p>車幅: <input type="text" name="VehicleWidth">m <input type="text" name="VehicleWidth1">m</p>
   <p>車長: <input type="text" name="Commander">m <input type="text" name="Commander1">m</p>

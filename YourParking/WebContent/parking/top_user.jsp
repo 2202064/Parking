@@ -1,7 +1,5 @@
 <%@page contentType = "text/html; charset=UTF-8" %>
-<%@include file="../header.html" %>
-<%@include file="../tool/sample_menu.jsp" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="./sample_menu.jsp" %>
 
 <form action="#" method="post">
 	<input type="text" name="search" placeholder="ここに入力">
@@ -9,15 +7,19 @@
 
 	<input type="checkbox" id="real" onchange="clickreal">実寸地検索
 	<input type="checkbox" id="eriaselect" onchange="clickeria">エリア選択
-	<%int count = 0;%>
-	<c:forEach var="i" begin="0" end="${eria.size}">
-	<input type="checkbox" id="region" onchange="clickreg">${eria.name[i]}
-	<%count++;%>
-	<%if(count == 4) {%>
-	<br>
-	<%count = 0;%>
-	<%}%>
-	</c:forEach>
+	<!--
+	<%
+		//for(i=0; i > eria.size(); i+=4){
+	%>
+			<input type="checkbox" id="region" onchange="clickreg">${eria.name[i]}
+			<input type="checkbox" id="region" onchange="clickreg">${eria.name[i+1]}
+			<input type="checkbox" id="region" onchange="clickreg">${eria.name[i+2]}
+			<input type="checkbox" id="region" onchange="clickreg">${eria.name[i+3]}
+
+	<%
+		//}
+	%>
+	 -->
 </form>
 
 <script>
@@ -37,4 +39,3 @@ function funB() {
 	}
 }
 </script>
-<%@include file="../footer.html" %>

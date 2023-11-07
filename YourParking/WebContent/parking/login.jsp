@@ -20,7 +20,7 @@
   <p id="email-error"></p>
   <p>パスワード <input type="password" name="pass" pattern=".{8,}" title="8文字以上のパスワードを入力してください" required></p>
   <p id="password-error"></p>
-  <p><a href="kakunin.jsp">メールアドレスまたはパスワードを忘れた場合はこちら</a></p>
+  <p><a href="confirmation_in.jsp">メールアドレスまたはパスワードを忘れた場合はこちら</a></p>
   <input type="submit" value="ログイン" class="example4">
 </form>
 
