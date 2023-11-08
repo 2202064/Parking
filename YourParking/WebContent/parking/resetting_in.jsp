@@ -5,7 +5,7 @@
 
 <body>
 <form action="resetting_out.jsp" method="post">
-        新しいパスワード<input type="password" name="pass" id="pass" oninput="validatePasswords()"><br>
+        新しいパスワード<input type="password" name="pass"  pattern=".{8,}" title="8文字以上のパスワードを入力してください" required id="pass" oninput="validatePasswords()"><br>
         確認用パスワード<input type="password" name="pass_confirmation" id="pass_confirmation" oninput="validatePasswords()"><br>
 <input type="submit" value="送信" id="submitButton" disabled>
 </form>
