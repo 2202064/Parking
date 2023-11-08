@@ -34,7 +34,7 @@
 			<li><a href="updcar.jsp">車更新</a></li>
 			<li><a href="delcar.jsp">車削除</a></li>
 		</ul></li>
-		<li><a href="logout">ログアウト</a>
+		<li><a href="logout_in">ログアウト</a>
 	</ul>
 </c:if>
 
@@ -42,9 +42,9 @@
 <!-- 管理者ログイン状態 -->
 	<ul>
 		<li><a href="top_admin">トップページ</a>
-		<li><a href="#">駐車場追加</a></li>
+		<li><a href="">駐車場追加</a></li>
 		<li><a href="#">駐車場更新</a></li>
-		<li><a href="#">ログアウト</a></li>
+		<li><a href="logout_in">ログアウト</a></li>
 	</ul>
 </c:if>
 
