@@ -9,7 +9,7 @@
 <c:forEach var="i" begin="0" end="${fn:length(list)}">
 <form action="#" method="post">
 <p>${list.name[i]}
-<p>${list.mail[i]}
+<p>${list.address[i]}
 <input type="submit" value="GO!" name="${list.id[i]}">
 <hr>
 </form>
