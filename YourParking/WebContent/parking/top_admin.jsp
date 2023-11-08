@@ -1,6 +1,6 @@
 <%@page contentType = "text/html; charset=UTF-8" %>
 <%@include file="../header.html" %>
-<%@include file="../tool/sample_menu.jsp" %>
+<%@include file="../tool/menu.jsp" %>
 
 <form action="Search" method="post">
 	<input type="text" name="search" placeholder="ここに入力">
