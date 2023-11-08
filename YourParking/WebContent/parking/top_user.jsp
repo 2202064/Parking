@@ -1,6 +1,6 @@
 <%@page contentType = "text/html; charset=UTF-8" %>
 <%@include file="../header.html" %>
-<%@include file="../tool/sample_menu.jsp" %>
+<%@include file="../tool/menu.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
