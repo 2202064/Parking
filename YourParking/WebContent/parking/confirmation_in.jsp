@@ -2,7 +2,7 @@
 
 <p>登録されているメールアドレスを入力してください</p>
 <form action="confirmation_out.jsp" method="post">
-<p>メールアドレス<input type="text" name="adress"></p>
+<p>メールアドレス <input type="email" name="address" id="email"required></p>
 <input type="submit" value="送信">
 </form>
 
