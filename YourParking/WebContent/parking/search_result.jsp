@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="../header.html" %>
-<%@include file="../tool/sample_menu.jsp" %>
+<%@include file="../tool/menu.jsp" %>
 
 <h2>検索結果一覧</h2>
 <c:forEach var="i" begin="0" end="${fn:length(list)}">
