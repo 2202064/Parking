@@ -8,7 +8,7 @@
 <form action="addcar.jsp" method="post">
   <p>氏名 <input type="text" name="name"required></p>
   <p>電話番号 <input type="text" name="phone"required></p>
-  <p>メールアドレス <input type="text" name="mail"required></p>
+  <p>メールアドレス <input type="email" name="address" id="email"required></p>
   <p>ユーザー <input type="text" name="user_id"required></p>
   <p>支払い情報 <input type="text" name="credit"required></p>
   <p>パスワード<input type="password" name="pass"  pattern=".{8,}" title="8文字以上のパスワードを入力してください" required id="pass" oninput="validatePasswords()"><br>
