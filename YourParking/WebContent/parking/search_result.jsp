@@ -3,13 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="../header.html" %>
-<%@include file="../tool/menu.jsp" %>
+<%@include file="../tool/sample_menu.jsp" %>
 
 <h2>検索結果一覧</h2>
 <c:forEach var="i" begin="0" end="${fn:length(list)}">
 <form action="Parking" method="post">
-<p>${list.name[i]}
-<p>${list.address[i]}
+<p>${list.parkName[i]}
+<p>${list.prefectures[i]}${list.municipalities[i]}${list.street[i]}
 <input type="submit" value="GO!" name="${list.id[i]}">
 <hr>
 </form>
