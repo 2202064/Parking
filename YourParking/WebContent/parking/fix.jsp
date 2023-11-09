@@ -9,7 +9,7 @@
 <form action="top_user.jsp" method="post" onsubmit="return validateForm()">
   <p>氏名 <input type="text" name="name"required></p>
   <p>電話番号 <input type="text" name="phone"required></p>
-  <p>メールアドレス <input type="text" name="mail"required></p>
+  <p>メールアドレス <input type="email" name="address" id="email"required></p>
   <p>ユーザー <input type="text" name="user_id"required></p>
   <p>支払い情報 <input type="text" name="credit"required></p>
   <p id="errorMessage" style="display: none; color: red;">パスワードが一致しません。</p>
@@ -22,7 +22,9 @@
   <p>重量  <input type="text" name="WEIGHT"required>kg </p>
 <input type="submit" value="確定" id="submitButton" disabled>
 </form>
-
+<form action="delete.jsp" method="post" onsubmit="return validateForm()">
+<input type="submit" value="退会">
+</form>
 <script>
 function validatePasswords() {
     var pass = document.getElementById("pass").value;
