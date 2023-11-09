@@ -4,6 +4,6 @@
 
 <h2>変更が完了いたしました</h2>
 
-<form action="トップページのＵＲＬ" method="post">
+<form action="top_user.jsp" method="post">
 <p><input type="submit" value="トップページに戻る"></p>
 </form>
