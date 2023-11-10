@@ -26,6 +26,6 @@ public class DeleteAction extends Action {
                 return "taikai_kakunin.jsp";
             }
         }
-        return "login-error.jsp";
+        return "login_error.jsp";
     }
 }
