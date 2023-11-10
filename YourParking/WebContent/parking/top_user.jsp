@@ -8,11 +8,9 @@
 	<input type="text" name="search" placeholder="ここに入力">
 	<input type="submit" value="検索"><br>
 
-	<!-- 利用者の時は、実寸地検索とエリア検索を表示 -->
-	<c:if test="${user.flag == 1}">
 	<input type="checkbox" id="real" onchange="clickreal">実寸地検索
 	<input type="checkbox" id="eriaselect" onchange="clickeria">エリア選択
-	</c:if>
+
 	<%int count = 0;%>
 	<c:forEach var="i" begin="0" end="${fn:length( eria )}">
 	<input type="checkbox" id="region" onchange="clickreg">${eria.name[i]}
