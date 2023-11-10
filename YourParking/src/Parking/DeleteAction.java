@@ -16,10 +16,10 @@ public class DeleteAction extends Action {
         User user = (User) session.getAttribute("user");
 
         if (user != null) {
-            int userId = user.getUser_Id();
+            int user_id = user.getUser_id();
 
             UserDAO dao = new UserDAO();
-            int rowsDeleted = dao.delete(userId);
+            int rowsDeleted = dao.delete(user_id);
 
             if (rowsDeleted > 0) {
                 session.invalidate();
