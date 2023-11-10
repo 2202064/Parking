@@ -1,7 +1,8 @@
-package YourParking;
+package login;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.User;
 import dao.UserDAO;
@@ -36,6 +37,11 @@ public class RegistrationAction extends Action {
         int result = dao.insert(user);
 
         if (result > 0) {
+            User newUser = dao.search(mail, pass);
+
+            HttpSession session = request.getSession();
+            session.setAttribute("user_id", newUser.getUser_Id());
+
             return "addcar.jsp";
         } else {
             request.setAttribute("message", "ユーザーの登録に失敗しました。");
