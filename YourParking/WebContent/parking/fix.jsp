@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 
 
-<p>新規会員登録</p>
+<p>登録情報修正</p>
 <body>
-<form action="top_user.jsp" method="post" onsubmit="return validateForm()">
+<form action="Fix.action" method="post" onsubmit="return validateForm()">
   <p>氏名 <input type="text" name="name"required></p>
   <p>電話番号 <input type="text" name="phone"required></p>
   <p>メールアドレス <input type="email" name="address" id="email"required></p>
