@@ -18,7 +18,7 @@ public class Search_CarAction extends Action {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        int user_Id = user.getUser_Id();
+        int user_Id = user.getUser_id();
 
         CarDAO dao = new CarDAO();
         List<Car> cars = dao.Search(user_Id);
