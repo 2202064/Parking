@@ -17,7 +17,7 @@
 <div id="info">
 	<h2>${park.parkingName}</h2>
 	<p>${park.prefectures}${park.municipalities}${park.street}
-	<p>${park.parkReview}
+	<p>評価${park.parkReview}
 
 	<table>
 		<tr>
@@ -77,5 +77,15 @@
 		</c:choose>
 	</c:forEach>
 </div>
+
+<div class="map-wrap">
+  <div id="map" class="map"></div>
+</div>
+
+<!-- "#" の部分に、作成したAPIキーを貼り付ける -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqYgGaC5jedsQ9tETIVVTmjHGgkpka2io&callback=initMap" async defer></script>
+
+<script src="../js/parking_map.js"></script>
+
 <script src="../js/parking.js">
 </script>
