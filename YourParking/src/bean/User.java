@@ -4,17 +4,14 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-	private int user_Id;
+	private int user_id;
 	private String name;
 	private String mail;
-	private String phone;
-	private String pass;
-	private String user_name;
-	private String credit;
-	private int flag;
-
-	public int getUser_Id() {
-		return user_Id;
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	public String getName() {
 		return name;
@@ -34,18 +31,6 @@ public class User implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getFlag() {
-		return flag;
-	}
-	public void setFlag(int flag) {
-		this.flag = flag;
-	}
-	public void setCredit(String credit) {
-		this.credit = credit;
-	}
-	public String getCredit() {
-		return credit;
-	}
 	public String getPass() {
 		return pass;
 	}
@@ -58,7 +43,23 @@ public class User implements Serializable {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	public void setUser_Id(int user_Id) {
-		this.user_Id = user_Id;
+	public String getCredit() {
+		return credit;
 	}
+	public void setCredit(String credit) {
+		this.credit = credit;
+	}
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+	private String phone;
+	private String pass;
+	private String user_name;
+	private String credit;
+	private int flag;
+
+
 }
