@@ -23,7 +23,7 @@ public class DeleteAction extends Action {
 
             if (rowsDeleted > 0) {
                 session.invalidate();
-                return "taikai_kakunin.jsp";
+                return "delete_in.jsp";
             }
         }
         return "login_error.jsp";
