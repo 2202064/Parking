@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 
 <p>退会の理由等ございましたらご入力ください</p>
-<form action="delete_in.jsp" method="post">
+<form action="delete_out.jsp" method="post">
 <p>*任意</p>
 <input type="text" name="message">
 <p><input type="submit" value="退会"></p>
