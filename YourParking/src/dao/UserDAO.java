@@ -53,14 +53,13 @@ public class UserDAO extends DAO {
     public int insert(User user) throws Exception {
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("insert into user values(null, ?, ?, ?, ?, ?, ?)");
+        PreparedStatement st = con.prepareStatement("insert into user (user_id, name, mail, phone, pass, user_name, credit, flag) values(null, ?, ?, ?, ?, ?, ?, 0)");
         st.setString(1, user.getName());
         st.setString(2, user.getMail());
         st.setString(3, user.getPhone());
         st.setString(4, user.getPass());
         st.setString(5, user.getUser_name());
         st.setString(6, user.getCredit());
-        st.setInt(7, user.getFlag());
         int line = st.executeUpdate();
 
         st.close();
