@@ -7,6 +7,13 @@ public class User implements Serializable {
 	private int user_id;
 	private String name;
 	private String mail;
+	private String phone;
+	private String pass;
+	private String user_name;
+	private String credit;
+	private int flag;
+
+
 	public int getUser_id() {
 		return user_id;
 	}
@@ -55,11 +62,7 @@ public class User implements Serializable {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
-	private String phone;
-	private String pass;
-	private String user_name;
-	private String credit;
-	private int flag;
+
 
 
 }
