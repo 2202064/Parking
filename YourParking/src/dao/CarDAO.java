@@ -37,7 +37,7 @@ public class CarDAO extends DAO {
 	}
 
 
-    public int addCar(Car car) throws Exception {
+    public int insert(Car car) throws Exception {
         try (Connection con = getConnection();
              PreparedStatement st = con.prepareStatement("INSERT INTO CAR (CAR_ID, USER_ID, CAR_NAME, CAR_HIGH, CAR_WIDTH, CAR_LENGTH, CAR_WEIGHT, GROUND_HEIGHT) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)")) {
 
@@ -53,7 +53,7 @@ public class CarDAO extends DAO {
         }
     }
 
-    public int updCar(Car car) throws Exception {
+    public int update(Car car) throws Exception {
         try (Connection con = getConnection();
              PreparedStatement st = con.prepareStatement("UPDATE CAR SET CAR_NAME=?, CAR_HIGH=?, CAR_WIDTH=?, CAR_LENGTH=?, CAR_WEIGHT=?, GROUND_HEIGHT=? WHERE CAR_ID = ? " )) {
 
