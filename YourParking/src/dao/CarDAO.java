@@ -10,44 +10,62 @@ import bean.Car;
 
 public class CarDAO extends DAO {
 
-    public List<Car> getAllCars() throws Exception {
-        List<Car> cars = new ArrayList<>();
+	public List<Car> search(int user_Id) throws Exception {
+	    List<Car> cars = new ArrayList<>();
 
+	    try (Connection con = getConnection();
+	         PreparedStatement st = con.prepareStatement("SELECT * FROM CAR WHERE USER_ID = ?")) {
+	        st.setInt(1, user_Id); // プレースホルダに値を設定
+
+	        try (ResultSet rs = st.executeQuery()) {
+	            while (rs.next()) {
+	                Car car = new Car();
+	                car.setCar_id(rs.getInt("CAR_ID"));
+	                car.setUser_id(rs.getInt("USER_ID"));
+	                car.setCar_name(rs.getString("CAR_NAME"));
+	                car.setCar_high(rs.getDouble("CAR_HIGH"));
+	                car.setCar_width(rs.getDouble("CAR_WIDTH"));
+	                car.setCar_length(rs.getDouble("CAR_LENGTH"));
+	                car.setCar_weight(rs.getDouble("CAR_WEIGHT"));
+	                car.setGround_height(rs.getDouble("GROUND_HEIGHT"));
+	                cars.add(car);
+	            }
+	        }
+	    }
+
+	    return cars;
+	}
+
+
+    public int addCar(Car car) throws Exception {
         try (Connection con = getConnection();
-             PreparedStatement st = con.prepareStatement("SELECT * FROM CAR");
-             ResultSet rs = st.executeQuery()) {
+             PreparedStatement st = con.prepareStatement("INSERT INTO CAR (CAR_ID, USER_ID, CAR_NAME, CAR_HIGH, CAR_WIDTH, CAR_LENGTH, CAR_WEIGHT, GROUND_HEIGHT) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)")) {
 
-            while (rs.next()) {
-                Car car = new Car();
-                car.setCarId(rs.getInt("CAR_ID"));
-                car.setUserId(rs.getString("USER_ID"));
-                car.setCarName(rs.getString("CAR_NAME"));
-                car.setCarHigh(rs.getDouble("CAR_HIGH"));
-                car.setCarWidth(rs.getDouble("CAR_WIDTH"));
-                car.setCarLength(rs.getDouble("CAR_LENGTH"));
-                car.setCarWeight(rs.getDouble("CAR_WEIGHT"));
-                car.setGroundHeight(rs.getDouble("GROUND_HEIGHT"));
-                cars.add(car);
-            }
-        }
-
-        return cars;
-    }
-
-    public int insertCar(Car car) throws Exception {
-        try (Connection con = getConnection();
-             PreparedStatement st = con.prepareStatement("INSERT INTO CAR (CAR_NAME, CAR_HIGH, CAR_WIDTH, CAR_LENGTH, CAR_WEIGHT, GROUND_HEIGHT) VALUES (?, ?, ?, ?, ?, ?)")) {
-
-            st.setString(1, car.getCarName());
-            st.setDouble(2, car.getCarHigh());
-            st.setDouble(3, car.getCarWidth());
-            st.setDouble(4, car.getCarLength());
-            st.setDouble(5, car.getCarWeight());
-            st.setDouble(6, car.getGroundHeight());
+        	st.setInt(1, car.getUser_id());
+            st.setString(2, car.getCar_name());
+            st.setDouble(3, car.getCar_high());
+            st.setDouble(4, car.getCar_width());
+            st.setDouble(5, car.getCar_length());
+            st.setDouble(6, car.getCar_weight());
+            st.setDouble(7, car.getGround_height());
 
             return st.executeUpdate();
         }
     }
 
+    public int updCar(Car car) throws Exception {
+        try (Connection con = getConnection();
+             PreparedStatement st = con.prepareStatement("UPDATE CAR SET CAR_NAME=?, CAR_HIGH=?, CAR_WIDTH=?, CAR_LENGTH=?, CAR_WEIGHT=?, GROUND_HEIGHT=? WHERE CAR_ID = ? " )) {
 
+            st.setString(1, car.getCar_name());
+            st.setDouble(2, car.getCar_high());
+            st.setDouble(3, car.getCar_width());
+            st.setDouble(4, car.getCar_length());
+            st.setDouble(5, car.getCar_weight());
+            st.setDouble(6, car.getGround_height());
+            st.setInt(7, car.getCar_id());
+
+            return st.executeUpdate();
+        }
+    }
 }
