@@ -1,4 +1,4 @@
-package YourParking;
+package yourparking;
 
 import java.util.List;
 
@@ -11,17 +11,17 @@ import bean.User;
 import dao.CarDAO;
 import tool.Action;
 
-public class Search_CarAction extends Action {
+public class SearchCarAction extends Action {
     public String execute(
         HttpServletRequest request, HttpServletResponse response
     ) throws Exception {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        int user_Id = user.getUser_id();
+        int user_id = user.getUser_id();
 
         CarDAO dao = new CarDAO();
-        List<Car> cars = dao.Search(user_Id);
+        List<Car> cars = dao.search(user_id);
         session.setAttribute("cars", cars);
 
 
