@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Car implements Serializable {
     private int car_id;
-    private String user_id;
+    private int user_id;
     private String car_name;
     private double car_high;
     private double car_width;
@@ -17,10 +17,10 @@ public class Car implements Serializable {
 	public void setCar_id(int car_id) {
 		this.car_id = car_id;
 	}
-	public String getUser_id() {
+	public Integer getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(String user_Id) {
+	public void setUser_id(int user_Id) {
 		this.user_id = user_Id;
 	}
 	public String getCar_name() {
