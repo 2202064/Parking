@@ -11,6 +11,7 @@ yeah
 <c:out value="${ user.flag}"/>
 
 <c:out value="${suc_message}"/>
+<c:out value="${fai_message}"/>
 <table border="1" style="border-collapse: collapse">
   <c:forEach items="${sessionScope.cars}" var="car">
     <tr>
