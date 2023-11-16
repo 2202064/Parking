@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" %>
+<%@include file="../tool/menu.jsp" %>
 
 <p>登録されているメールアドレスを入力してください</p>
 <form action="confirmation_out.jsp" method="post">
