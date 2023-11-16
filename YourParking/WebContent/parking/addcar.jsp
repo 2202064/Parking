@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="../tool/menu.jsp" %>
 <c:out value="${suc_message}"/>
+<c:out value="${fai_message}"/>
 
 <p>車追加</p>
 <form action="ownedcar_out.jsp" method="post" onsubmit="return validateForm()">
