@@ -1,42 +1,27 @@
-<%@page contentType = "text/html; charset=UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="../header.html" %>
 <%@include file="../tool/menu.jsp" %>
+<link rel="stylesheet" type="text/css" href="../css/user.css">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <form action="Search" method="post">
-	<input type="text" name="search" placeholder="ここに入力">
-	<input type="submit" value="検索"><br>
 
-	<input type="checkbox" id="real" onchange="clickreal">実寸地検索
-	<input type="checkbox" id="eriaselect" onchange="clickeria">エリア選択
+    <div class="kouhei">
+        <input type="text" name="search" placeholder="ここに入力">
+        <input type="submit" value="検索"><br>
 
-	<%int count = 0;%>
-	<c:forEach var="i" begin="0" end="${fn:length( eria )}">
-	<input type="checkbox" id="region" onchange="clickreg">${eria.name[i]}
-	<%count++;%>
-	<%if(count == 4) {%>
-	<br>
-	<%count = 0;%>
-	<%}%>
-	</c:forEach>
+        <a href="#" id="realLink" onclick="clickreal()">実寸地検索</a>
+        <a href="#" id="eriaLink" onclick="clickeria()">エリア選択</a>
+
+        <div class="kouhei message" id="regionList" style="display:none;">
+        </div>
+    </div>
+
+    <div id="prefectureListKanto" class="prefectureList kouhei" style="display:none;">
+    </div>
 </form>
 
-<script>
-document.getElementById("region").style.display="none";
-// 実寸地検索が押下された場合
-function fanA() {
+<script src="../js/top_user.js"></script>
 
-}
-
-// エリア選択が押下された場合
-function funB() {
-	const eriaSelect = document.getElementById("eriaselect")
-	if (eriaSelect.style.display = "none") {
-		eriaSelect.style.display = "block"
-	}else{
-		eriaSelect.style.display = "none"
-	}
-}
-</script>
 <%@include file="../footer.html" %>
