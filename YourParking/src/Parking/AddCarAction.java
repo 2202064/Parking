@@ -12,7 +12,7 @@ import bean.User;
 import dao.CarDAO;
 import tool.Action;
 
-public class InsertCarAction extends Action {
+public class AddCarAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
 
@@ -34,7 +34,13 @@ public class InsertCarAction extends Action {
                 int result = new CarDAO().insert(car);
                 session.setAttribute("car", car);
 
-                return (result > 0) ? "addcar.jsp" : "addcar.jsp";
+                if(result > 0){
+                	request.setAttribute("suc_message", "追加しました");
+                	return "addcar.jsp";
+                }else{
+                	request.setAttribute("fai_message", "失敗しました");
+                	return "addcar.jsp";
+                }
             } else {
                 return "login_error2.jsp";
             }
