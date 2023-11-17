@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="../header.html" %>
 <%@include file="../tool/menu.jsp" %>
-<link rel="stylesheet" type="text/css" href="../css/user.css">
+<link rel="stylesheet" type="text/css" href="../css/top_user.css">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
