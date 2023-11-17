@@ -1,19 +1,30 @@
 var map;
-
-var coord_X = (request.getAttribute("coord_x"));
-var coord_Y = (request.getAttribute("coord_y"));
+const sample_X = 35.667379;
+const sample_Y = 139.7054965;
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: coord_X, lng: coord_Y }, // 初期の中心座標を設定
-    zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    draggable: false
+    const initialLatLng = new google.maps.LatLng(sample_X, sample_Y);
+
+    const mapOptions = {
+        center: initialLatLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        draggable: false,
+        scrollwheel: false
+    };
+
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    const icon = "../img/parking.png"; // Directly use the icon path
+    const marker = new google.maps.Marker({
+        position: initialLatLng,
+        icon: icon,
+        map: map,
     });
+    marker.addListener('error', function(e) {
+        console.error('Marker failed to load:', e);
+    });
+
 }
 
-/*
-サンプル用の緯度経度
-lat: 35.667379,
-lng: 139.7054965
-*/
+window.initMap = initMap;
