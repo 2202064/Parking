@@ -30,9 +30,9 @@
 		<li><a href="#">登録情報修正</a></li>
 		<li><label for="correction" class="cor">車情報修正▽</label>
 		<ul id="cor_url">
-			<li><a href="addcar.jsp">車追加</a></li>
-			<li><a href="updcar.jsp">車更新</a></li>
-			<li><a href="delcar.jsp">車削除</a></li>
+			<li><a href="add_car.jsp">車追加</a></li>
+			<li><a href="UpdCar.action">車更新</a></li>
+			<li><a href="del_car.jsp">車削除</a></li>
 		</ul></li>
 		<li><a href="logout_in">ログアウト</a>
 	</ul>
