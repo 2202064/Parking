@@ -15,9 +15,11 @@
 
 <!-- 駐車場情報表示 -->
 <div id="info">
-	<h2>${park.parkingName}</h2>
-	<p>${park.prefectures}${park.municipalities}${park.street}
+	<h2>駐車場名${park.parkingName}</h2>
+	<p>住所${park.prefectures}${park.municipalities}${park.street}
 	<p>評価${park.parkReview}
+
+  	<div id="map" class="map"></div>
 
 	<table>
 		<tr>
@@ -78,14 +80,10 @@
 	</c:forEach>
 </div>
 
-<div class="map-wrap">
-  <div id="map" class="map"></div>
-</div>
-
 <!-- "#" の部分に、作成したAPIキーを貼り付ける -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqYgGaC5jedsQ9tETIVVTmjHGgkpka2io&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uZORqEffnBYn9GV7e9WiOZiYAeEfObw&callback=initMap" async defer></script>
 
 <script src="../js/parking_map.js"></script>
+<script src="../js/parking.js"></script>
 
-<script src="../js/parking.js">
-</script>
+<%@include file="../footer.html" %>
