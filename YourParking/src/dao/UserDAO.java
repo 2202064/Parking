@@ -67,4 +67,23 @@ public class UserDAO extends DAO {
 
         return line;
     }
+    public int update(User user) throws Exception {
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("UPDATE user SET name = ?, mail = ?, phone = ?, user_name = ?, credit = ?, pass = ? WHERE user_id = ?");
+        st.setString(1, user.getName());
+        st.setString(2, user.getMail());
+        st.setString(3, user.getPhone());
+        st.setString(4, user.getUser_name());
+        st.setString(5, user.getCredit());
+        st.setString(6, user.getPass());
+        st.setInt(7, user.getUser_id());
+
+        int line = st.executeUpdate();
+
+        st.close();
+        con.close();
+
+        return line;
+    }
 }
