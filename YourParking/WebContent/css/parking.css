@@ -1,0 +1,12 @@
+#info_btn {
+	display: none;
+}
+
+#review_btn {
+	display: none;
+}
+
+#map {
+	height: 400px;
+    width: 600px;
+}
