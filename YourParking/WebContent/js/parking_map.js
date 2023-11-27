@@ -10,21 +10,19 @@ function initMap() {
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         draggable: false,
-        scrollwheel: false
     };
 
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-    const icon = "../img/parking.png";
     const marker = new google.maps.Marker({
         position: initialLatLng,
-        icon: icon,
-        map: map,
-    });
-    marker.addListener('error', function(e) {
-        console.error('Marker failed to load:', e);
+        icon: {
+        	url: "../img/parking.png",
+        	scaledSize : new google.maps.Size(50, 50)
+        },
     });
 
+    marker.setMap(map);
 }
 
 window.initMap = initMap;
