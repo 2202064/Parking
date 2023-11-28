@@ -1,10 +1,11 @@
-<%@page contentType="text/html; charset=UTF-8" %>
-<%@include file="../tool/header.jsp" %>
-<link rel="stylesheet" type="text/css" href="../css/logout_out.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@include file="../header.html" %>
+<link rel="stylesheet" type="text/css" href="../css/logout.css">
 
+<div class="logout-container">
+    <h2>ログアウト</h2>
+    <p>ログアウトしました</p>
+    <p><a href="./login.jsp">ログイン画面</a></p>
+</div>
 
-<p class="gaming">ログアウトしました</p>
-<a href="../parking/top_user.jsp">トップページ</a>
-
-<%@include file="../tool/footer.html" %>
+<%@include file="../footer.html" %>
