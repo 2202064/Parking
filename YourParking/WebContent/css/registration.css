@@ -1,0 +1,55 @@
+/* 通常のスタイル（画面幅が480px以上）*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background: linear-gradient(to right, #e60000, #f39800, #fff100, #009944, #0068b7, #1d2088, #920783, #e60000) 0 / 200%;
+    height: 30px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-position: 100%;
+}
+
+/* 画面幅が480px以下の場合のスタイル */
+@media (max-width: 480px) {
+    form {
+        max-width: 90%;
+    }
+
+    input[type="submit"] {
+        height: 40px;
+        line-height: 40px;
+    }
+}
