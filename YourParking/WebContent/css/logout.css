@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.logout-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #0068b7;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 画面幅が480px以下の場合のスタイル */
+@media (max-width: 480px) {
+    .logout-container {
+        max-width: 90%;
+    }
+}
