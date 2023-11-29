@@ -5,7 +5,8 @@
 <%@include file="../tool/header.jsp" %>
 <%@include file="../tool/menu.jsp" %>
 <script src="../js/add_parking.js"></script>
-<p>駐車場追加
+
+<p>駐車場更新
 <form action="../user/login.jsp" method="POST" onsubmit="return validateForm()">
 	駐車場種類<input type="text" name="park_genre"><br>
 	駐車場名<input type="text" name="parking_name"><br>
@@ -22,7 +23,19 @@
 	車幅<input type="number" name="park_width" step="0.01">m<br>
 	地上高<input type="number" name="ground_height" step="0.01">m<br>
 	重量<input type="number" name="park_weight" step="0.01">kg
-	<input type="submit" value="追加">
-</form>
+	<br><input type="submit" value="追加"><br>
 
-<%@include file="../tool/footer.html" %>
+</form>
+<script src="../js/upd_parking.js"></script>
+
+
+<div class="form-box">
+<form action="delete_parking.jsp" method="POST" >
+<div class="form-box__item">
+<input type="checkbox" id="consent" name="consent" onclick="btnConsent();">
+<label for="consent">削除</label>
+</div>
+<input type="submit" value="確定" class="btn"  id="btn-consent">
+</form>
+</div>
+<%@include file="../tool/footer.html"%>
