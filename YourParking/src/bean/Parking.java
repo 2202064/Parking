@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Parking implements Serializable {
     private int parking_id;
+    private int cd_id;
     private String parking_name;
     private String prefectures;
     private String municipalities;
@@ -21,14 +22,20 @@ public class Parking implements Serializable {
     private Double actual_width;
     private Double actual_length;
     private Double actual_weight;
-    private Double x_coord;
-    private Double y_coord;
+    private Double xcoord;
+    private Double ycoord;
 	public int getParking_id() {
 		return parking_id;
 	}
 	public void setParking_id(int parking_id) {
 		this.parking_id = parking_id;
 	}
+	public int getCd_id() {
+        return cd_id;
+    }
+    public void setCd_id(int cd_id) {
+        this.cd_id = cd_id;
+    }
 	public String getParking_name() {
 		return parking_name;
 	}
@@ -131,17 +138,17 @@ public class Parking implements Serializable {
 	public void setActual_weight(Double actual_weight) {
 		this.actual_weight = actual_weight;
 	}
-	public Double getX_coord() {
-		return x_coord;
+	public Double getXcoord() {
+		return xcoord;
 	}
-	public void setX_coord(Double x_coord) {
-		this.x_coord = x_coord;
+	public void setXcoord(Double xcoord) {
+		this.xcoord = xcoord;
 	}
-	public Double getY_coord() {
-		return y_coord;
+	public Double getYcoord() {
+		return ycoord;
 	}
-	public void setY_coord(Double y_coord) {
-		this.y_coord = y_coord;
+	public void setYcoord(Double ycoord) {
+		this.ycoord = ycoord;
 	}
 
 
