@@ -21,6 +21,8 @@
     車幅<input type="number" name="park_width" step="0.01">m<br>
     地上高<input type="number" name="ground_height" step="0.01">m<br>
     重量<input type="number" name="park_weight" step="0.01">kg<br>
+	X座標<input name ="xCoord"><br>
+	Y座標<input name ="yCoord"><br>
     <input type="submit" value="追加">
 </form>
 <%@include file="../tool/footer.html" %>
