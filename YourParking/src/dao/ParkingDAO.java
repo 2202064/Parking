@@ -49,5 +49,25 @@ public class ParkingDAO extends DAO {
         }
     }
 
+ public int insert(Parking parking) throws Exception {
+        try (Connection con = getConnection();
+             PreparedStatement st = con.prepareStatement("INSERT INTO PARKING (parking_name, prefuctures, municipalities, street, park_high, park_width, park_length, park_weight, park_space, park_time, park_money, park_payment, park_genre) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 
+            st.setString(1, parking.getParking_name());
+            st.setString(2, parking.getPrefectures());
+            st.setString(3, parking.getMunicipalities());
+            st.setString(4, parking.getStreet());
+            st.setDouble(5, parking.getPark_high());
+            st.setDouble(6, parking.getPark_width());
+            st.setDouble(7, parking.getPark_length());
+            st.setDouble(8, parking.getPark_weight());
+            st.setString(9, parking.getPark_space());
+            st.setString(10, parking.getPark_time());
+            st.setString(11, parking.getPark_money());
+            st.setString(12, parking.getPark_payment());
+            st.setString(13, parking.getPark_genre());
+
+            return st.executeUpdate();
+        }
+    }
 }
