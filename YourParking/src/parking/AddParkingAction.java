@@ -16,8 +16,8 @@ public class AddParkingAction extends Action {
         try {
             Parking parking = new Parking();
             parking.setParking_name(request.getParameter("parking_name"));
-            parking.setPrefectures(request.getParameter("prefectures_id"));
-            parking.setMunicipalities(request.getParameter("cd_id"));
+            parking.setPrefectures(request.getParameter("prefectures"));
+            parking.setMunicipalities(request.getParameter("municipalities"));
             parking.setStreet(request.getParameter("street"));
             parking.setPark_high(Double.parseDouble(request.getParameter("park_high")));
             parking.setPark_width(Double.parseDouble(request.getParameter("park_width")));
@@ -28,6 +28,9 @@ public class AddParkingAction extends Action {
             parking.setPark_money(request.getParameter("park_money"));
             parking.setPark_payment(request.getParameter("park_payment"));
             parking.setPark_genre(request.getParameter("park_genre"));
+            parking.setCd_id(Integer.parseInt(request.getParameter("cd_id")));
+            parking.setXcoord(Double.parseDouble(request.getParameter("xcoord")));
+            parking.setYcoord(Double.parseDouble(request.getParameter("ycoord")));
 
             int result = new ParkingDAO().insert(parking);
 
