@@ -25,7 +25,8 @@
         		<input type="text" name="search" placeholder="ここに入力">
         		<input type="submit" value="検索"><br>
 
-		        <a href="#" id="realLink" onclick="clickreal()">実寸地検索</a>
+       			<input type="checkbox" id="consent" name="consent" onclick="btnConsent();">
+			<label for="consent">実寸地検索</label>
 		        <a href="#" id="eriaLink" onclick="clickeria()">エリア選択</a>
 
 		        <div class="kouhei message" id="regionList" style="display:none;">
