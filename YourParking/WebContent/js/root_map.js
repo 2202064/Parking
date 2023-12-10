@@ -11,7 +11,6 @@ var starting = document.getElementById("starting")
 var routeOutLine = document.getElementById("route_outline")
 var naviOutLine = document.getElementById("navi_outline")
 var flag = false
-var locationCount = 0;
 
 onOff.style.display = 'none';
 navi_On.style.display = 'block';
