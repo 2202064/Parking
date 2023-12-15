@@ -32,6 +32,6 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uZORqEffnBYn9GV7e9WiOZiYAeEfObw&callback=initMap" async defer></script>
 
-<script src="../js/root_map2.js"></script>
+<script src="../js/root_map.js"></script>
 
 <%@include file="../tool/footer.html" %>
