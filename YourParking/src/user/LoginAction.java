@@ -37,6 +37,7 @@ public class LoginAction extends Action {
 			if (user!=null) {
 				if (sha256.equals(sha2562)){
 					session.setAttribute("user", user);
+					return "../parking/top_user.jsp";
 				}
 			}
 
@@ -44,6 +45,6 @@ public class LoginAction extends Action {
 			e. printStackTrace();
 			return "../error/login_error.jsp";
 		}
-		return "../parking/top_user.jsp";
+		return "../error/login_error.jsp";
 	}
 }
