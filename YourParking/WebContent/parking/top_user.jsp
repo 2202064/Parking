@@ -3,8 +3,14 @@
 <%@include file="../tool/menu.jsp" %>
 
 <!-- CSS -->
+<!--文字制御 -->
 <link href="../css/top_user.css" rel="stylesheet">
+
+<!-- ロゴアニメーション -->
 <link href="../css/logo2.css" rel="stylesheet">
+
+<!-- 全体用 -->
+<link href="../css/style.css" rel="stylesheet">
 
 <!-- tag -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,27 +23,49 @@
   </div>
 </div>
 
-<main>
+<body>
 	<div id="container">
-		<form action="Search" method="post">
+		<form action="Search.action" method="post">
 
     		<div class="kouhei">
-        		<input type="text" name="search" placeholder="ここに入力">
+        		<input type="text" id="input" name="search" placeholder="ここに入力">
         		<input type="submit" value="検索"><br>
+        		<p class="info">※新宿区、板橋区、の形式で入力してください</p>
 
-       			<input type="checkbox" id="consent" name="consent" onclick="btnConsent();">
-			<label for="consent">実寸地検索</label>
-		        <a href="#" id="eriaLink" onclick="clickeria()">エリア選択</a>
 
-		        <div class="kouhei message" id="regionList" style="display:none;">
-		        </div>
+		        <a href="#" id="realLink" onclick="clickreal()">実寸地検索</a>
+
+				<!-- 地方選択-->
+				 <label for="firstSelect"></label>
+				  <select id="firstSelect">
+				  	<option value="">地方を選択</option>
+				    <option value="北海道">北海道</option>
+				    <option value="関東">関東</option>
+				    <option value="東北">東北</option>
+				    <option value="中部">中部</option>
+				    <option value="近畿">近畿</option>
+				    <option value="中国">中国</option>
+				    <option value="四国">四国</option>
+				    <option value="九州">九州</option>
+				  </select>
+
+				  <!-- 都道府県 -->
+				  <label for="secondSelect"></label><br>
+				  <select id="secondSelect"></select><br>
+
+				  <!-- 市区町村 -->
+				  <label for="thirdSelect"></label><br>
+				  <span><select id="thirdSelect"></select></span>
+
+
+
 		    </div>
 
 		    <div id="prefectureListKanto" class="prefectureList kouhei" style="display:none;">
 		    </div>
 		</form>
 	</div>
-</main>
+</body>
 
 <!-- JS -->
 <script src="../js/top_user.js"></script>
