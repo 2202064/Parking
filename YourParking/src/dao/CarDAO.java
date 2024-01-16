@@ -10,11 +10,12 @@ import bean.Car;
 
 public class CarDAO extends DAO {
 
+	// 保存者取得
 	public List<Car> search(int user_id) throws Exception {
 	    List<Car> cars = new ArrayList<>();
 
 	    try (Connection con = getConnection();
-	         PreparedStatement st = con.prepareStatement("SELECT * FROM CAR WHERE USER_ID = ?")) {
+	         PreparedStatement st = con.prepareStatement("SELECT * FROM CAR WHERE USER_ID = ? AND FLAG_USE = 0")) {
 	        st.setInt(1, user_id); // プレースホルダに値を設定
 
 	        try (ResultSet rs = st.executeQuery()) {
@@ -34,6 +35,31 @@ public class CarDAO extends DAO {
 	    }
 
 	    return cars;
+	}
+
+	// 使用車情報取得
+	public Car search_use(int user_id) throws Exception {
+	    Car car_use = new Car();
+
+	    try (Connection con = getConnection();
+	         PreparedStatement st = con.prepareStatement("SELECT * FROM CAR WHERE USER_ID = ? AND FLAG_USE = 1")) {
+	        st.setInt(1, user_id); // プレースホルダに値を設定
+
+	        try (ResultSet rs = st.executeQuery()) {
+	            while (rs.next()) {
+	            	car_use.setCar_id(rs.getInt("CAR_ID"));
+	            	car_use.setUser_id(rs.getInt("USER_ID"));
+	            	car_use.setCar_name(rs.getString("CAR_NAME"));
+	            	car_use.setCar_high(rs.getDouble("CAR_HIGH"));
+	            	car_use.setCar_width(rs.getDouble("CAR_WIDTH"));
+	            	car_use.setCar_length(rs.getDouble("CAR_LENGTH"));
+	            	car_use.setCar_weight(rs.getDouble("CAR_WEIGHT"));
+	            	car_use.setGround_height(rs.getDouble("GROUND_HEIGHT"));
+	            }
+	        }
+	    }
+
+	    return car_use;
 	}
 
 
@@ -81,4 +107,25 @@ public class CarDAO extends DAO {
 
         return line;
     }
+    // フラグを０にする
+    public int change_0(int user_id) throws Exception {
+    	Connection con = getConnection();
+
+    	PreparedStatement st = con.prepareStatement("UPDATE CAR SET FLAG_USE=0 WHERE USER_ID = ?");
+    	st.setInt(1, user_id);
+
+    	return st.executeUpdate();
+    }
+    // フラグを1にする
+    public int change_use(int user_id, int car_id) throws Exception {
+    	Connection con = getConnection();
+
+    	PreparedStatement st = con.prepareStatement("UPDATE CAR SET FLAG_USE=1 WHERE USER_ID = ? AND CAR_ID = ?");
+    	st.setInt(1, user_id);
+    	st.setInt(2, car_id);
+
+		return st.executeUpdate();
+
+    }
+
 }
