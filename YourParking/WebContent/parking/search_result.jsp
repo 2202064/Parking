@@ -5,14 +5,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Search Result</title>
+    <title>Your Parking</title>
 </head>
 <body>
 
-<h2>Search Result</h2>
+<h2>検索結果一覧</h2>
 
-<c:forEach var="cd" items="${prefectures}">
-    <p><a href="/parking/SearchCd?cd_id=${cd.cd_id}">${cd.cd_name}</a></p>
+<c:forEach var="parking" items="${parking}">
+	<form action="../parking/ParkingInfo" method="post">
+		${parking.prefectures}${parking.municipalities}${parking.street}<br>
+    	${parking.parking_name}<br>
+    	<input type="hidden" value="${parking.parking_id}" name="parking_id">
+    	<input type="submit" value="詳しく見る">
+    </form>
+    <hr>
 </c:forEach>
 
 </body>

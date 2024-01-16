@@ -15,27 +15,37 @@
 
 <!-- 駐車場情報表示 -->
 <div id="info">
-	<h2>駐車場名${park.parkingName}</h2>
-	<p>住所${park.prefectures}${park.municipalities}${park.street}
-	<p>評価${park.parkReview}
+	<h2>駐車場名 ${parking.parking_name}</h2>
+	<p>住所 ${parking.prefectures}${parking.municipalities}${parking.street}</p>
+	<!-- <p>評価${parking.score} -->
 
   	<div id="map" class="map"></div>
 
+  	<form action="root_parking.jsp" method="post">
+  		<input type="hidden" value="${parking.parking_name}" name="parking_name">
+  		<input type="hidden" value="${parking.prefectures}" name="prefectures">
+  		<input type="hidden" value="${parking.municipalities}" name="municipalities">
+  		<input type="hidden" value="${parking.street}" name="street">
+  		<input type="hidden" value="${parking.xcoord}" name="xcoord">
+  		<input type="hidden" value="${parking.ycoord}" name="ycoord">
+  		<input type="submit" value="ここへ行く">
+  	</form>
+
 	<table>
 		<tr>
-			<td>料金</td><td>${park.parkMoney}</td>
+			<td>料金</td><td>${parking.park_money}</td>
 		</tr>
 		<tr>
-			<td>支払い方法</td><td>${park.parkPayment}</td>
+			<td>支払い方法</td><td>${parking.park_payment}</td>
 		</tr>
 		<tr>
-			<td>営業時間</td><td>${park.parkTime}</td>
+			<td>営業時間</td><td>${parking.park_time}</td>
 		</tr>
 		<tr>
-			<td>収容台数</td><td>${park.parkSpace}</td>
+			<td>収容台数</td><td>${parking.park_space}</td>
 		</tr>
 		<tr>
-			<td>重量制限</td><td>${park.parkWeight}</td>
+			<td>重量制限</td><td>${parking.park_weight}</td>
 		</tr>
 	</table>
 
@@ -44,45 +54,57 @@
 		<th></th><th>車高</th><th>車幅</th><th>車長</th>
 	</tr>
 		<tr>
-			<td>規定値</td><td>${park.parkHigh}</td><td>${park.parkWidth}</td><td>${park.parkLength}</td>
+			<td>規定値</td><td>${parking.park_high}</td><td>${parking.park_width}</td><td>${parking.park_length}</td>
 		</tr>
 		<tr>
-			<td>実寸値</td><td>${park.actualHigh}</td><td>${park.actualWidth}</td><td>${park.actualLength}</td>
+			<td>実寸値</td><td>${parking.actual_height}</td><td>${parking.actual_width}</td><td>${parking.actual_length}</td>
 		</tr>
 	</table>
 </div>
 
 <div id="review">
 	<a href="review.jsp">レビュー投稿はこちら</a>
-	<c:forEach var="i" begin="0" end="${fn:length(review)}">
-		${review.userName}<br>
-		${review.userComment}
-		<c:choose>
-			<c:when test="${park.parkRating == '0'}">
+	<c:forEach var="review" items="${review}">
+		${review.user_name}<br>
+		${review.comment}
+		<!-- <c:choose>
+			<c:when test="${parking.parkRating == '0'}"> -->
 				<!-- ☆0のイメージを挿入 -->
+			<!--
 			</c:when>
-			<c:when test="${park.parkRating == '1'}">
+			<c:when test="${parking.parkRating == '1'}"> -->
 				<!-- ☆1の応じたイメージを挿入 -->
+			<!--
 			</c:when>
-			<c:when test="${park.parkRating == '2'}">
+			<c:when test="${parking.parkRating == '2'}"> -->
 				<!-- ☆2に応じたイメージを挿入 -->
+			<!--
 			</c:when>
-			<c:when test="${park.parkRating == '3'}">
+			<c:when test="${parking.parkRating == '3'}"> -->
 				<!-- ☆3に応じたイメージを挿入 -->
+			<!--
 			</c:when>
-			<c:when test="${park.parkRating == '4'}">
+			<c:when test="${parking.parkRating == '4'}"> -->
 				<!-- ☆4に応じたイメージを挿入 -->
+			<!--
 			</c:when>
-			<c:when test="${park.parkRating == '5'}">
+			<c:when test="${parking.parkRating == '5'}"> -->
 				<!-- ☆5に応じたイメージを挿入 -->
+			<!--
 			</c:when>
 		</c:choose>
+		-->
 	</c:forEach>
 </div>
 
-<!-- "#" の部分に、作成したAPIキーを貼り付ける -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uZORqEffnBYn9GV7e9WiOZiYAeEfObw&callback=initMap" async defer></script>
-
+<script>
+    window.onload = function() {
+        // Google マップ API スクリプトの読み込み
+        var script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uZORqEffnBYn9GV7e9WiOZiYAeEfObw&callback=initMap';
+        document.head.appendChild(script);
+    };
+</script>
 <script src="../js/parking_map.js"></script>
 <script src="../js/parking.js"></script>
 

@@ -4,8 +4,20 @@
 
 <link rel="stylesheet" type="text/css" href="../css/parking.css">
 
-<p>${park.parkingName}
-<p>${park.prefectures}${park.municipalities}${park.street}
+<%
+String parkingName = request.getParameter("parking_name");
+String prefectures = request.getParameter("prefectures");
+String municipalities = request.getParameter("municipalities");
+String street = request.getParameter("street");
+Float xcoord = Float.parseFloat(request.getParameter("xcoord"));
+Float ycoord = Float.parseFloat(request.getParameter("ycoord"));
+%>
+
+<p><%= parkingName %>
+<p><%= prefectures %><%= municipalities %><%= street %>
+
+<input type="hidden" value="<%= xcoord %>" name="xcoord">
+<input type="hidden" value="<%= ycoord %>" name="ycoord">
 
 <div id="route_outline">
 	<span  id="route_duration"></span>
@@ -27,10 +39,18 @@
 <input type="checkbox" id="onoff">
 
 <form id="go_review" action="#" method="post">
-	<input type="submit" value="レビュー" name="${park.parkingName}">
+	<input type="hidden" value="<%= parkingName %>" name="parking_name">
+	<input type="submit" value="レビュー">
 </form>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uZORqEffnBYn9GV7e9WiOZiYAeEfObw&callback=initMap" async defer></script>
+<script>
+    window.onload = function() {
+        // Google マップ API スクリプトの読み込み
+        var script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA1uZORqEffnBYn9GV7e9WiOZiYAeEfObw&callback=initMap';
+        document.head.appendChild(script);
+    };
+</script>
 
 <script src="../js/root_map.js"></script>
 
