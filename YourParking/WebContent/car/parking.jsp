@@ -53,7 +53,7 @@
 </div>
 
 <div id="review">
-	<a href="review.jsp">レビュー投稿はこちら</a>
+	<a href="review_in.jsp">レビュー投稿はこちら</a>
 	<c:forEach var="i" begin="0" end="${fn:length(review)}">
 		${review.userName}<br>
 		${review.userComment}

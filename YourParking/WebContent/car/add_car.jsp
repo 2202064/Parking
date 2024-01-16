@@ -12,6 +12,7 @@
   <p>車長 <input type="text" name="LENGTH">m </p>
   <p>重量  <input type="text" name="WEIGHT">kg </p>
   <p>地上高 <input type="text" name="GROUND_HEIGHT">m</p>
+  <input type="checkbox" name="flag" value="flag">使用車に設定する
   <input type="submit" value="追加">
 </form>
 </html>
