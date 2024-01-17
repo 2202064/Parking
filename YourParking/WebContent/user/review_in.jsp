@@ -60,9 +60,10 @@
     let parkingForm = document.getElementById('parkingForm');
   </script>
 
-  <form action="review_out.jsp" method="post">
+  <form action="/parking/Review.Action" method="post">
     <p>*任意</p>
-    <input type="text" name="message">
+    <textarea id="comment"></textarea>
+    <input type="hidden" id="good">
     <p><input type="submit" value="投稿する"></p>
   </form>
 
