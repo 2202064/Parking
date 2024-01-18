@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Parking;
 import bean.Review;
 import dao.ParkingDAO;
+import dao.ReviewDAO;
 
 @WebServlet(urlPatterns={"/parking/ParkingInfo"})
 public class ParkingInfo extends HttpServlet {
@@ -21,15 +22,16 @@ public class ParkingInfo extends HttpServlet {
 		try {
 			int parking_id = Integer.parseInt(request.getParameter("parking_id"));
 			ParkingDAO dao=new ParkingDAO();
+			ReviewDAO Rdao=new ReviewDAO();
 	        Parking parking = dao.searchSingle(parking_id);
 
 			request.getSession().setAttribute("parking",parking );
 
-			List<Review> review = new ArrayList<>();
+			List<Review> search = new ArrayList<>();
 
-			review = dao.review(parking_id);
+			search = Rdao.search(parking_id);
 
-			request.getSession().setAttribute("review", review);
+			request.getSession().setAttribute("search", search);
 
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("parking.jsp");
 		    dispatcher.forward(request, response);
