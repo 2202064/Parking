@@ -1,0 +1,9 @@
+.star-container {
+  display: flex;
+}
+
+.star {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
