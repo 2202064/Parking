@@ -8,7 +8,6 @@ import java.util.List;
 
 import bean.Car;
 import bean.Parking;
-import bean.Review;
 
 public class ParkingDAO extends DAO {
 
@@ -68,34 +67,7 @@ public class ParkingDAO extends DAO {
 	    return parking;
 	}
 
-	public List<Review> review(int parking_id) throws Exception {
-		List<Review> review = new ArrayList<>();
 
-		try (Connection con1 = getConnection();
-			PreparedStatement st1 = con1.prepareStatement("SELECT * FROM REVIEW WHERE PARKING_ID = ?")) {
-			st1.setInt(1, parking_id); // プレースホルダに値を設定
-
-	        try (ResultSet rs1 = st1.executeQuery()) {
-	            while (rs1.next()) {
-	                int user_id = rs1.getInt("user_id");
-
-	                try (Connection con2 = getConnection();
-	           	         PreparedStatement st2 = con2.prepareStatement("SELECT * FROM User WHERE USER_ID = ?")) {
-	           	        st2.setInt(1, user_id); // プレースホルダに値を設定
-
-	           	        try (ResultSet rs2 = st2.executeQuery()) {
-	           	            while (rs2.next()) {
-	           	            	Review rev = new Review();
-	           	            	rev.setUser_name(rs2.getString("user_name"));
-	           	            	rev.setComment(rs1.getString("comment"));
-	           	            }
-	           	        }
-	                }
-	            }
-	        }
-	    }
-		return review;
-	}
 
     public int insertCar(Car car) throws Exception {
         try (Connection con = getConnection();
