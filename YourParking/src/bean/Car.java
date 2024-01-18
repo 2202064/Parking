@@ -11,6 +11,8 @@ public class Car implements Serializable {
     private double car_length;
     private double car_weight;
     private double ground_height;
+    private int flag_use;
+
 	public int getCar_id() {
 		return car_id;
 	}
@@ -58,6 +60,12 @@ public class Car implements Serializable {
 	}
 	public void setGround_height(double ground_height) {
 		this.ground_height = ground_height;
+	}
+	public int getFlag_use() {
+		return flag_use;
+	}
+	public void setFlag_use(int flag_use) {
+		this.flag_use = flag_use;
 	}
 
 
