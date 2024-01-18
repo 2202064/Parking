@@ -9,6 +9,7 @@ secondSelect.innerHTML = '';
 
     if (selectedValue === '北海道') {
       //secondSelect非表示
+
       secondSelect.style.display = 'none';
       thirdSelect.style.display = 'block';
 
