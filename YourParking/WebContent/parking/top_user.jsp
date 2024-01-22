@@ -51,11 +51,15 @@
 
 				  <!-- 都道府県 -->
 				  <label for="secondSelect"></label><br>
-				  <select id="secondSelect"></select><br>
+				  <select id="secondSelect">
+					<option value=""都道府県を選択</option>
+				  </select><br>
 
 				  <!-- 市区町村 -->
 				  <label for="thirdSelect"></label><br>
-				  <span><select id="thirdSelect"></select></span>
+				  <span><select id="thirdSelect">
+					<option value=""市区町村を選択</option>
+				  </select></span>
 
 
 
