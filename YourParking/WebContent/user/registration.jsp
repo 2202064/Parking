@@ -13,7 +13,7 @@
 	<p>ユーザー名：<input name="user_id" required></p>
 	<p>クレカ：<input type="text"name="credit"pattern="[0-9]{16}" title="数字16桁"required></p>
 	<p>パス：<input type="password" name="pass"  pattern=".{8,50}" title="8文字以上50文字以下のパスワードを入力してください" required id="pass" oninput="validatePasswords()"><br>
-	<p>パス２：<input type="password" name="kakunin"  pattern=".{8,50}" title="8文字以上のパスワードを入力してください" required id="pass" oninput="validatePasswords()"><br>
+	<p>パス２：<input type="password" name="kakunin"  pattern=".{8,50}" title="8文字以上50文字以下のパスワードを入力してください" required id="pass" oninput="validatePasswords()"><br>
 	<input type="submit" value="送信">
 </form>
 
