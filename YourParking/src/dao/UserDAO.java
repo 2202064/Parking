@@ -8,6 +8,7 @@ import bean.User;
 
 public class UserDAO extends DAO {
 
+
     public User search(String mail) throws Exception {
         User user = null;
 
@@ -87,21 +88,88 @@ public class UserDAO extends DAO {
         return line;
     }
 
-    public boolean core(User user) {
-        try (Connection con = getConnection();
-             PreparedStatement st = con.prepareStatement("SELECT * FROM USER WHERE USER_NAME = ? OR PHONE = ? OR MAIL = ?")) {
-            st.setString(1, user.getUser_name());
-            st.setString(2, user.getPhone());
-            st.setString(3, user.getMail());
+    public User searchId(String mail) throws Exception {
+		User user = new User();
 
-            try (ResultSet rs = st.executeQuery()) {
-                return rs.next();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e1) {
-			e1.printStackTrace();
-		}
-        return false;
+		try (Connection con = getConnection();
+		PreparedStatement st = con.prepareStatement("SELECT * FROM User WHERE MAIL = ?");){
+	    	st.setString(1, mail); // プレースホルダに値を設定
+		    try (ResultSet rs = st.executeQuery()) {
+		    	while (rs.next()) {
+		            user.setUser_id(rs.getInt("USER_ID"));
+		        }
+		    }
+	    }
+		return user;
+	}
+
+    public int change_flag(int user_id) throws Exception {
+
+    	try (Connection con = getConnection();
+    	PreparedStatement st = con.prepareStatement("UPDATE User SET flag = 1 WHERE user_id = ?");){
+    		st.setInt(1, user_id);
+
+    		int line = st.executeUpdate();
+
+            st.close();
+            con.close();
+
+            return line;
+    	}
     }
+
+    public User take_all(int user_id) throws Exception {
+    	User user = new User();
+
+    	try (Connection con = getConnection();
+    	PreparedStatement st = con.prepareStatement("SELECT * FROM User WHERE USER_ID = ?")) {
+    		st.setInt(1, user_id);
+
+    		try (ResultSet rs = st.executeQuery()) {
+    			while (rs.next()) {
+    				user.setUser_id(rs.getInt("USER_ID"));
+    				user.setName(rs.getString("NAME"));
+    				user.setUser_name(rs.getString("USER_NAME"));
+    				user.setMail(rs.getString("MAIL"));
+    				user.setPhone(rs.getString("PHONE"));
+    				user.setCredit(rs.getString("CREDIT"));
+    				user.setFlag(rs.getInt("FLAG"));
+    			}
+    		}
+    	}
+		return user;
+    }
+
+    public int verification(String mail) throws Exception {
+    	int result;
+
+    	try (Connection con = getConnection();
+    	PreparedStatement st = con.prepareStatement("SELECT * FROM User WHERE MAIL = ?")) {
+    		st.setString(1, mail);
+    		try (ResultSet rs = st.executeQuery()) {
+    			if (rs.next()) {
+	    			result = 1;
+	    		} else {
+	    			result = 0;
+	    		}
+    		}
+    	}
+
+		return result;
+    }
+    public int change_pass(User user) throws Exception {
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("UPDATE user SET pass = ? WHERE user_id = ?");
+        st.setBytes(1, user.getPass());
+        st.setInt(2, user.getUser_id());
+
+        int line = st.executeUpdate();
+
+        st.close();
+        con.close();
+
+        return line;
+    }
+
 }
