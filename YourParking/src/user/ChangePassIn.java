@@ -3,8 +3,10 @@ package user;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +15,7 @@ import dao.UserDAO;
 import utils.EmailUtility;
 
 @WebServlet(urlPatterns={"/user/ChangePassIn"})
-public class ChangePassIn {
+public class ChangePassIn extends HttpServlet implements Servlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String mail = request.getParameter("mail");
@@ -29,16 +31,18 @@ public class ChangePassIn {
 					// トークンを生成する
 					String token = user_id + "_" + System.currentTimeMillis();
 
+					System.out.println(contextPath);
+
 					// メール認証用のリンクを生成
-					String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
+					String ChangePassOutLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
 				    contextPath + "/user/ChangePassOut?token=" + token;
 
 				    // メール内容
 				    String subject = "メールアドレスの確認";
-				    String content = "以下のリンクをクリックしてパスワードを変更してください。\n" + verificationLink;
+				    String content = "以下のリンクをクリックしてパスワードを変更してください。\n" + ChangePassOutLink;
 
 				    // メール送信
-				    EmailUtility.sendEmail(mail, subject, content);
+				    EmailUtility.sendMail(mail, subject, content);
 
 				    // 変更リクエスト完了ページへリダイレクト
 				    response.sendRedirect(contextPath + "/user/change_pass_mail.jsp");

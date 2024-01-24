@@ -3,8 +3,10 @@ package user;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,8 +15,8 @@ import bean.User;
 import dao.UserDAO;
 
 @WebServlet(urlPatterns={"/user/Verification"})
-public class Verification {
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+public class Verification extends HttpServlet implements Servlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
 		// トークンを受け取る
