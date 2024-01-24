@@ -171,5 +171,22 @@ public class UserDAO extends DAO {
 
         return line;
     }
+	
+	public boolean core(User user) {
+        try (Connection con = getConnection();
+             PreparedStatement st = con.prepareStatement("SELECT * FROM USER WHERE USER_NAME = ? OR PHONE = ? OR MAIL = ?")) {
+            st.setString(1, user.getUser_name());
+            st.setString(2, user.getPhone());
+            st.setString(3, user.getMail());
 
+            try (ResultSet rs = st.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e1) {
+			e1.printStackTrace();
+		}
+        return false;
+    }
 }
