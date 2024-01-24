@@ -5,7 +5,7 @@
 
 <p>パスワードの変更が完了しました
 
-<form action="/user/login.jsp" method="post">
+<form action="../user/login.jsp" method="post">
 	<input type="submit" value="ログイン画面に戻る">
 </form>
 

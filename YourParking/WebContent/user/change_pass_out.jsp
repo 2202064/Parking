@@ -3,7 +3,7 @@
 <%@include file="../tool/header.jsp" %>
 <c:out value="${message}"/>
 
-<form action="/user/ChangePassComp" method="post">
+<form action="../user/ChangePassComp" method="post">
 	パス：<input type="password" name="pass">
 	パス２：<input type="password" name="kakunin">
 	<input type="submit" value="送信">
