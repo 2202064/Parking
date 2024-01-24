@@ -18,65 +18,69 @@
 
 <!-- logo -->
 <div id="splash">
-  <div id="splash_logo">
-    <img src="../img/icon.png" alt="" class="fadeUp">
-  </div>
+<div id="splash_logo">
+<img src="../img/icon.png" alt="" class="fadeUp">
+</div>
 </div>
 
 <body>
-	<div id="container">
-		<form action="Search.action" method="post">
+<div id="container">
+<form action="Search.action" method="post">
 
     		<div class="kouhei">
-        		<input type="text" id="input" name="search" placeholder="ここに入力">
-        		<input type="submit" value="検索"><br>
-        		<p class="info">※新宿区、板橋区、の形式で入力してください</p>
+<input type="text" id="input" name="search" placeholder="ここに入力">
+<input type="submit" value="検索"><br>
+<p class="info">※新宿区、板橋区、の形式で入力してください</p>
 
 
-		        <a href="#" id="realLink" onclick="clickreal()">実寸地検索</a>
+				<input type="checkbox" id="consent" name="consent" value="notnull" onclick="btnConsent();">
+<label for="consent">実寸地検索</label>
 
 				<!-- 地方選択-->
-				 <label for="firstSelect"></label>
-				  <select id="firstSelect">
-				  	<option value="">地方を選択</option>
-				    <option value="北海道">北海道</option>
-				    <option value="関東">関東</option>
-				    <option value="東北">東北</option>
-				    <option value="中部">中部</option>
-				    <option value="近畿">近畿</option>
-				    <option value="中国">中国</option>
-				    <option value="四国">四国</option>
-				    <option value="九州">九州</option>
-				  </select>
+<label for="firstSelect"></label>
+<select id="firstSelect">
+<option value="">地方を選択</option>
+<option value="北海道">北海道</option>
+<option value="関東">関東</option>
+<option value="東北">東北</option>
+<option value="中部">中部</option>
+<option value="近畿">近畿</option>
+<option value="中国">中国</option>
+<option value="四国">四国</option>
+<option value="九州">九州</option>
+</select>
 
 				  <!-- 都道府県 -->
-				  <label for="secondSelect"></label><br>
-				  <select id="secondSelect">
-					<option value=""都道府県を選択</option>
-				  </select><br>
+<label for="secondSelect"></label><br>
+<span style="display: block; text-align: center;">
+  <select id="secondSelect" style="margin: auto;">
+  <option value="">都道府県を選択</option>
+  </select>
+</span>
 
 				  <!-- 市区町村 -->
-				  <label for="thirdSelect"></label><br>
-				  <span><select id="thirdSelect">
-					<option value=""市区町村を選択</option>
-				  </select></span>
+<label for="thirdSelect"></label><br>
+<span style="display: block; text-align: center;">
+  <select id="thirdSelect" style="margin: auto;">
+  <option value="">市区町村を選択</option>
+  </select>
+</span>
 
 
-
-		    </div>
 
 		    <div id="prefectureListKanto" class="prefectureList kouhei" style="display:none;">
-		    </div>
-		</form>
-	</div>
+</div>
+</div>
+</form>
+</div>
 </body>
 
 <!-- JS -->
 <script src="../js/top_user.js"></script>
 
 <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/4-1-4/js/4-1-4.js"></script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/4-1-4/js/4-1-4.js"></script>
 
 <%@include file="../tool/footer.html" %>
