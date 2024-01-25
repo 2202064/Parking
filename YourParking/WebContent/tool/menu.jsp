@@ -43,7 +43,7 @@
 		<li><a href="top_user.jsp">トップページ</a>
 		<li><a href="#">駐車場追加</a></li>
 		<li><a href="#">駐車場更新</a></li>
-		<li><a href="logout.action">ログアウト</a></li>
+		<li><a href="../user/logout.action">ログアウト</a></li>
 	</ul>
 </c:if>
 
