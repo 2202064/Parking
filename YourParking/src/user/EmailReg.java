@@ -26,7 +26,7 @@ public class EmailReg extends HttpServlet implements Servlet {
 		try {
 			User user_id = dao.searchId(mail);
 			// トークンを生成する
-			String token = user_id + "_" + System.currentTimeMillis();
+			String token = user_id.getUser_id() + "_" + System.currentTimeMillis();
 
 			// メール認証用のリンクを生成
 			String verificationLink = "http://" + request.getServerName() + ":" + request.getServerPort() +
