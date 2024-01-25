@@ -31,7 +31,7 @@
 		<ul id="cor_url">
 			<li><a href="../car/ChangeCar" id="change">使用車変更</a>
 			<li><a href="../car/add_car.jsp">車追加</a></li>
-			<li><a href="../car/ChangeCar" id="update">車更新</a></li>
+			<li><a href="../car/SearchCar.action" id="update">車更新</a></li>
 		</ul></li>
 		<li><a href="../user/Logout.action">ログアウト</a>
 	</ul>
@@ -42,8 +42,7 @@
 	<ul>
 		<li><a href="top_user.jsp">トップページ</a>
 		<li><a href="../parking/add_parking.jsp">駐車場追加</a></li>
-		<li><a href="../parking/add_parking.jsp">駐車場更新</a></li>
-		<li><a href="../user/logout.action">ログアウト</a></li>
+		<li><a href="logout.action">ログアウト</a></li>
 	</ul>
 </c:if>
 
