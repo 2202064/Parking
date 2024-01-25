@@ -27,7 +27,7 @@ public class EmailUtility {
 		try {
 			MimeMessage mimeMessage = new MimeMessage(Ssession);
 			// 送信元メールアドレスと送信者名を指定
-			mimeMessage.setFrom(new InternetAddress("systemadmin@yourparkingdropship.com ", "SanoKouki", "iso-2022-jp"));
+			mimeMessage.setFrom(new InternetAddress("systemadmin@yourparkingdropship.com ", "YourParking", "iso-2022-jp"));
 			// 送信先メールアドレスを指定
 			mimeMessage.setRecipients(Message.RecipientType.TO, mail);
 			// メールのタイトルを指定
