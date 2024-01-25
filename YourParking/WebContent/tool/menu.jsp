@@ -41,8 +41,8 @@
 <!-- 管理者ログイン状態 -->
 	<ul>
 		<li><a href="top_user.jsp">トップページ</a>
-		<li><a href="#">駐車場追加</a></li>
-		<li><a href="#">駐車場更新</a></li>
+		<li><a href="../parking/add_parking.jsp">駐車場追加</a></li>
+		<li><a href="../parking/add_parking.jsp">駐車場更新</a></li>
 		<li><a href="../user/logout.action">ログアウト</a></li>
 	</ul>
 </c:if>
