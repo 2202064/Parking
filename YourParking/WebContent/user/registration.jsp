@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@include file="../tool/menu.jsp" %>
+<%@include file="../tool/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="../css/registration.css">
 <form action="Registration.action" method="POST" onsubmit="return validateForm()">
 
@@ -15,6 +16,5 @@
 	<input type="submit" value="送信">
 </form>
 
-<script src="../js/registration.js">
-
-</script>
+<script src="../js/registration.js"></script>
+<%@include file="../tool/footer.html" %>
