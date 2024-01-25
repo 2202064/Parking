@@ -13,7 +13,7 @@ import dao.UserDAO;
 import utils.EmailUtility;
 
 @WebServlet(urlPatterns={"/user/EmailReg"})
-public class EmailReg {
+public class EmailReg extends HttpServlet implements Servlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
