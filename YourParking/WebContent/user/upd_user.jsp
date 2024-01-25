@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <meta charset="UTF-8">
 <%@include file="../tool/menu.jsp" %>
+<%@include file="../tool/header.jsp" %>
 
 <body>
 
@@ -21,6 +22,5 @@
 <form action="del_user_in.jsp" method="post" onsubmit="return validateForm()">
 <input type="submit" value="退会">
 </form>
-<script src="../js/registration.js">
-
-</script>
+<script src="../js/registration.js"></script>
+<%@include file="../tool/footer.html" %>
