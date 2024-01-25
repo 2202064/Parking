@@ -22,7 +22,9 @@
 	車高<input type="number" name="park_high" step="0.01">m<br>
 	車幅<input type="number" name="park_width" step="0.01">m<br>
 	地上高<input type="number" name="ground_height" step="0.01">m<br>
-	重量<input type="number" name="park_weight" step="0.01">kg
+	重量<input type="number" name="park_weight" step="0.01">kg<br>
+	X座標<input type="number" name="xcoord" step="0.01"><br>
+	Y座標<input type="number" name="ycoord" step="0.01"><br>
 	<br><input type="submit" value="追加"><br>
 
 </form>
