@@ -44,7 +44,6 @@ public class ParkingDAO extends DAO {
 	            while (rs.next()) {
 	                parking.setParking_id(rs.getInt("parking_id"));
 	                parking.setParking_name(rs.getString("parking_name"));
-	                //parking.setScore(rs.getDouble("score"));
 	                parking.setPrefectures(rs.getString("prefectures"));
 	                parking.setMunicipalities(rs.getString("municipalities"));
 	                parking.setStreet(rs.getString("street"));
@@ -135,4 +134,37 @@ public class ParkingDAO extends DAO {
 		}
 		return parking;
 	}
+    public int update(Parking parking) throws Exception {
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("UPDATE parking SET parking_id = ?, cd_id = ?, parking_name = ?, prefectures = ?,  municipalities= ?, street = ?, park_high = ?, park_width = ?, park_length = ?, park_weight = ?, park_space = ?, park_time = ?, park_money = ?, park_payment = ?, park_genre = ?, actual_height = ?, actual_width = ?, actual_length = ?, actual_weight = ?, xcoord = ?, ycoord = ? where = parking_id = ?");
+        st.setInt(1, parking.getParking_id());
+        st.setInt(2, parking.getCd_id());
+        st.setString(3, parking.getParking_name());
+        st.setString(4, parking.getPrefectures());
+        st.setString(5, parking.getMunicipalities());
+        st.setString(6, parking.getStreet());
+        st.setDouble(7, parking.getPark_high());
+        st.setDouble(8, parking.getPark_width());
+        st.setDouble(9, parking.getPark_length());
+        st.setDouble(10, parking.getPark_weight());
+        st.setString(11, parking.getPark_space());
+        st.setString(12, parking.getPark_time());
+        st.setString(13, parking.getPark_money());
+        st.setString(14, parking.getPark_payment());
+        st.setString(15, parking.getPark_genre());
+        st.setDouble(16, parking.getActual_height());
+        st.setDouble(17, parking.getActual_width());
+        st.setDouble(18, parking.getActual_length());
+        st.setDouble(19, parking.getActual_weight());
+        st.setDouble(20, parking.getXcoord());
+        st.setDouble(21, parking.getYcoord());
+
+        int line = st.executeUpdate();
+
+        st.close();
+        con.close();
+
+        return line;
+    }
 }
