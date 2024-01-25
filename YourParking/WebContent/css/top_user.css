@@ -1,13 +1,18 @@
 @CHARSET "UTF-8";
 
-.kouhei {
-	padding: 30px;
-	text-align: center;
-}
 .kohei {
 	padding: 30px;
 	text-align: center;
 }
+
+  #container {
+    text-align: center;
+  }
+
+  #secondSelect,
+  #thirdSelect {
+    margin: auto;
+  }
 
 .message{
   display: none;
@@ -35,4 +40,9 @@ input.toggle:checked ~ .message{
   padding-left: 20px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.kouhei {
+	padding: 30px;
+	text-align: center;
 }
