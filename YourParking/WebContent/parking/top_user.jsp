@@ -30,7 +30,7 @@
     		<div class="kouhei">
 <input type="text" id="input" name="search" placeholder="ここに入力">
 <input type="submit" value="検索"><br>
-<p class="info">※新宿区、板橋区、の形式で入力してください</p>
+<p class="info">※新宿区、板橋区、の形式で入力してください</p>ss
 
 
 				<input type="checkbox" id="consent" name="consent" value="notnull" onclick="btnConsent();">
@@ -39,7 +39,7 @@
 				<!-- 地方選択-->
 <label for="firstSelect"></label>
 <select id="firstSelect">
-<option value="">地方を選択</option>
+<option value="" disabled selected>地方を選択</option>
 <option value="北海道">北海道</option>
 <option value="関東">関東</option>
 <option value="東北">東北</option>
@@ -49,7 +49,7 @@
 <option value="四国">四国</option>
 <option value="九州">九州</option>
 </select>
-
+</div>
 				  <!-- 都道府県 -->
 <label for="secondSelect"></label><br>
 <span style="display: block; text-align: center;">
@@ -70,7 +70,7 @@
 
 		    <div id="prefectureListKanto" class="prefectureList kouhei" style="display:none;">
 </div>
-</div>
+
 </form>
 </div>
 </body>
