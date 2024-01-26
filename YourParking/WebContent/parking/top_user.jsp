@@ -30,7 +30,7 @@
     		<div class="kouhei">
 <input type="text" id="input" name="search" placeholder="ここに入力">
 <input type="submit" value="検索"><br>
-<p class="info">※新宿区、板橋区、の形式で入力してください</p>ss
+<p class="info">※新宿区、板橋区、の形式で入力してください</p>
 
 
 				<input type="checkbox" id="consent" name="consent" value="notnull" onclick="btnConsent();">
