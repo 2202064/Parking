@@ -25,7 +25,7 @@
 
 <body>
 <div id="container">
-<form action="Search.action" method="post">
+<form action="../parking/Search" method="post">
 
     		<div class="kouhei">
 <input type="text" id="input" name="search" placeholder="ここに入力">
@@ -39,7 +39,7 @@
 				<!-- 地方選択-->
 <label for="firstSelect"></label>
 <select id="firstSelect">
-<option value="" disabled selected>地方を選択</option>
+<option value="">地方を選択</option>
 <option value="北海道">北海道</option>
 <option value="関東">関東</option>
 <option value="東北">東北</option>
