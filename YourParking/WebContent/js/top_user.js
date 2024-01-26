@@ -1,11 +1,11 @@
-
 document.getElementById('firstSelect').addEventListener('change', function(event) {
+    const selectedValue = event.target.value;
 
-const selectedValue = event.target.value;
-
-// ダミークリア
-const secondSelect = document.getElementById('secondSelect');
-secondSelect.innerHTML = '';
+    // ダミークリア
+    const secondSelect = document.getElementById('secondSelect');
+    const thirdSelect = document.getElementById('thirdSelect');
+    secondSelect.innerHTML = '';
+    thirdSelect.innerHTML = '';
 
     if (selectedValue === '北海道') {
       //secondSelect非表示
@@ -271,14 +271,13 @@ secondSelect.innerHTML = '';
     }
   });
 
-  document.getElementById('secondSelect').addEventListener('change', function(event2) {
 
-	    const selectedValue2 = event.target.value;
-	    // addOption(thirdSelect, '', '');
+document.getElementById('secondSelect').addEventListener('change', function(event2) {
 
-	    // ダミークリア
-	    const secondSelect = document.getElementById('thirdSelect');
-	    thirdSelect.innerHTML = '';
+    const selectedValue2 = event2.target.value;
+    // ダミークリア
+    const thirdSelect = document.getElementById('thirdSelect');
+    thirdSelect.innerHTML = '';
 	    if (selectedValue2 === '青森') {
 	    	addOption(thirdSelect, '青森市', '青森市');
 	    	addOption(thirdSelect, '鰺ケ沢町', '鰺ケ沢町');
@@ -1921,6 +1920,9 @@ secondSelect.innerHTML = '';
 
 	  });
 
+document.getElementById('secondSelect').style.display = 'none';
+document.getElementById('thirdSelect').style.display = 'none';
+
   //select関数
   function addOption(selectElement, text, value) {
     const option = document.createElement('option');
@@ -1928,4 +1930,3 @@ secondSelect.innerHTML = '';
     option.value = value;
     selectElement.appendChild(option);
   }
-
