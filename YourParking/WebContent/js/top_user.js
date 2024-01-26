@@ -195,8 +195,12 @@ document.getElementById('firstSelect').addEventListener('change', function(event
     } else {
       //secondSelect表示
       secondSelect.style.display = 'block';
-      thirdSelect.style.display = 'block';
-
+      thirdSelect.style.display = 'none';
+  	if (selectedValue!==""){
+	      secondSelect.style.display = 'block';
+	}else if(selectedValue==""){
+		secondSelect.style.display = 'none';
+	}
     if (selectedValue === '東北') {
     	addOption(secondSelect, '都道府県を選択', '');
         addOption(secondSelect, '青森', '青森');
@@ -278,6 +282,11 @@ document.getElementById('secondSelect').addEventListener('change', function(even
     // ダミークリア
     const thirdSelect = document.getElementById('thirdSelect');
     thirdSelect.innerHTML = '';
+    	if (selectedValue2!==""){
+    	      thirdSelect.style.display = 'block';
+    	}else if(selectedValue2==""){
+    		thirdSelect.style.display = 'none';
+    	}
 	    if (selectedValue2 === '青森') {
 	    	addOption(thirdSelect, '青森市', '青森市');
 	    	addOption(thirdSelect, '鰺ケ沢町', '鰺ケ沢町');
