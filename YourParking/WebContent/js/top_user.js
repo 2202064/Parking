@@ -1,10 +1,81 @@
-document.getElementById('secondSelect').style.display = 'none';
-document.getElementById('thirdSelect').style.display = 'none';
-document.getElementById('area_button').style.display = 'none';
+document.addEventListener("DOMContentLoaded", function() {
+  var overlay = document.getElementById("page-overlay");
+
+  document.body.addEventListener("click", function(event) {
+    if (event.target.tagName === "A") {
+      overlay.classList.add("fade-in");
+
+
+      setTimeout(function() {
+        window.location.href = event.target.href;
+      }, 500);
+    }
+  });
+});
+
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 0, lng: 0}, // 初期の中心座標を設定
+    zoom: 15
+  });
+
+  // 位置情報を取得
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+      // 中心座標を取得した位置に設定
+      var centerLocation = new google.maps.LatLng(latitude, longitude);
+      map.setCenter(centerLocation);
+
+      // マーカーを追加
+      var marker = new google.maps.Marker({
+        position: centerLocation,
+        map: map,
+        title: 'ピン1'
+      });
+      var infoWindow = new google.maps.InfoWindow({
+        content: 'ここはカフェAです。'
+      });
+
+      marker.addListener('click', function() {
+        infoWindow.open(map, marker);
+      });
+    }, function() {
+      alert('位置情報を取得できませんでした。');
+    });
+  } else {
+    alert('位置情報をサポートしていないブラウザです。');
+  }
+}
+
+function searchLocation() {
+  var geocoder = new google.maps.Geocoder();
+  var location = document.getElementById('search').value;
+
+  geocoder.geocode({ 'address': location }, function (results, status) {
+    if (status === 'OK') {
+      var resultLocation = results[0].geometry.location;
+      map.setCenter(resultLocation);
+
+      var marker = new google.maps.Marker({
+        position: resultLocation,
+        map: map,
+        title: location
+      });
+    } else {
+      alert('場所が見つかりませんでした: ' + status);
+    }
+  });
+}
+
 document.getElementById('firstSelect').addEventListener('change', function(event) {
     const selectedValue = event.target.value;
 
-    // ダミークリア
+
     const secondSelect = document.getElementById('secondSelect');
     const thirdSelect = document.getElementById('thirdSelect');
     secondSelect.innerHTML = '';
@@ -15,8 +86,10 @@ document.getElementById('firstSelect').addEventListener('change', function(event
 
       secondSelect.style.display = 'none';
       thirdSelect.style.display = 'block';
+
   		addOption(thirdSelect, '市区町村を選択', '');
-	    addOption(thirdSelect, '愛別町', '愛別町');
+      	addOption(thirdSelect, '愛別町', '');
+      	addOption(thirdSelect, '愛別町', '愛別町');
 	  	addOption(thirdSelect, '赤井川村', '赤井川村');
 	  	addOption(thirdSelect, '赤平市', '赤平市');
 	  	addOption(thirdSelect, '旭川市', '旭川市');
@@ -201,7 +274,7 @@ document.getElementById('firstSelect').addEventListener('change', function(event
       thirdSelect.style.display = 'none';
   	if (selectedValue!==""){
 	      secondSelect.style.display = 'block';
-	}else {
+	}else if(selectedValue==""){
 		secondSelect.style.display = 'none';
 	}
     if (selectedValue === '東北') {
@@ -280,212 +353,212 @@ document.getElementById('firstSelect').addEventListener('change', function(event
 
 
 document.getElementById('secondSelect').addEventListener('change', function(event2) {
-document.getElementById('thirdSelect').addEventListener('change', function(event2) {
-        const selectedValue2 = event2.target.value;
-        const area_button = document.getElementById('area_button');
+	document.getElementById('thirdSelect').addEventListener('change', function(event2) {
+	        const selectedValue2 = event2.target.value;
+	        const area_button = document.getElementById('area_button');
 
-        // ダミークリア
-        const thirdSelect = document.getElementById('thirdSelect');
+	        // ダミークリア
+	        const thirdSelect = document.getElementById('thirdSelect');
 
-        if (selectedValue2 !== "") {
-            area_button.style.display = 'block';
-        } else {
-            area_button.style.display = 'none';
-        }
-    });
-    const selectedValue2 = event2.target.value;
-    // ダミークリア
-    const thirdSelect = document.getElementById('thirdSelect');
-    const area_button = document.getElementById('area_button');
-    thirdSelect.innerHTML = '';
-    	if (selectedValue2!==""){
-    	      thirdSelect.style.display = 'block';
-    	}else {
-    		thirdSelect.style.display = 'none';
-    	}
+	        if (selectedValue2 !== "") {
+	            area_button.style.display = 'block';
+	        } else {
+	            area_button.style.display = 'none';
+	        }
+	    });
+	    const selectedValue2 = event2.target.value;
+	    // ダミークリア
+	    const thirdSelect = document.getElementById('thirdSelect');
+	    const area_button = document.getElementById('area_button');
+	    thirdSelect.innerHTML = '';
+	    	if (selectedValue2!==""){
+	    	      thirdSelect.style.display = 'block';
+	    	}else {
+	    		thirdSelect.style.display = 'none';
+	    	}
 
 
 
-	    if (selectedValue2 === '青森') {
-	    	addOption(thirdSelect, '市区町村を選択', '');
-	    	addOption(thirdSelect, '青森市', '青森市');
-	    	addOption(thirdSelect, '鰺ケ沢町', '鰺ケ沢町');
-	    	addOption(thirdSelect, '今別町', '今別町');
-	    	addOption(thirdSelect, '田舎館村', '田舎館村');
-	    	addOption(thirdSelect, '板柳町', '板柳町');
-	    	addOption(thirdSelect, '大鰐町', '大鰐町');
-	    	addOption(thirdSelect, '大間町', '大間町');
-	    	addOption(thirdSelect, 'おいらせ町', 'おいらせ町');
-	    	addOption(thirdSelect, '風間浦村', '風間浦村');
-	    	addOption(thirdSelect, '黒石市', '黒石市');
-	    	addOption(thirdSelect, '五所川原市', '五所川原市');
-	    	addOption(thirdSelect, '五戸町', '五戸町');
-	    	addOption(thirdSelect, '佐井村', '佐井村');
-	    	addOption(thirdSelect, '三戸町', '三戸町');
-	    	addOption(thirdSelect, '七戸町', '七戸町');
-	    	addOption(thirdSelect, '新郷村', '新郷村');
-	    	addOption(thirdSelect, '外ヶ浜町', '外ヶ浜町');
-	    	addOption(thirdSelect, '田子町', '田子町');
-	    	addOption(thirdSelect, 'つがる市', 'つがる市');
-	    	addOption(thirdSelect, '鶴田町', '鶴田町');
-	    	addOption(thirdSelect, '十和田市', '十和田市');
-	    	addOption(thirdSelect, '東北町', '東北町');
-	    	addOption(thirdSelect, '中泊町', '中泊町');
-	    	addOption(thirdSelect, '南部町', '南部町');
-	    	addOption(thirdSelect, '西目屋村', '西目屋村');
-	    	addOption(thirdSelect, '野辺地町', '野辺地町');
-	    	addOption(thirdSelect, '八戸市', '八戸市');
-	    	addOption(thirdSelect, '階上町', '階上町');
-	    	addOption(thirdSelect, '弘前市', '弘前市');
-	    	addOption(thirdSelect, '平川市', '平川市');
-	    	addOption(thirdSelect, '平内町', '平内町');
-	    	addOption(thirdSelect, '東通村', '東通村');
-	    	addOption(thirdSelect, '深浦町', '深浦町');
-	    	addOption(thirdSelect, '藤崎町', '藤崎町');
-	    	addOption(thirdSelect, '三沢市', '三沢市');
-	    	addOption(thirdSelect, 'むつ市', 'むつ市');
-	    	addOption(thirdSelect, '蓬田村', '蓬田村');
-	    	addOption(thirdSelect, '横浜町', '横浜町');
-	    	addOption(thirdSelect, '六戸町', '六戸町');
-	    	addOption(thirdSelect, '六ケ所村', '六ケ所村');
-	    }else if (selectedValue2 === '岩手') {
-	    	addOption(thirdSelect, '市区町村を選択', '');
-	    	addOption(thirdSelect, '一関市', '一関市');
-	    	addOption(thirdSelect, '一戸町', '一戸町');
-	    	addOption(thirdSelect, '岩泉町', '岩泉町');
-	    	addOption(thirdSelect, '岩手町', '岩手町');
-	    	addOption(thirdSelect, '奥州市', '奥州市');
-	    	addOption(thirdSelect, '大槌町', '大槌町');
-	    	addOption(thirdSelect, '大船渡市', '大船渡市');
-	    	addOption(thirdSelect, '金ケ崎町', '金ケ崎町');
-	    	addOption(thirdSelect, '釜石市', '釜石市');
-	    	addOption(thirdSelect, '軽米町', '軽米町');
-	    	addOption(thirdSelect, '北上市', '北上市');
-	    	addOption(thirdSelect, '久慈市', '久慈市');
-	    	addOption(thirdSelect, '葛巻町', '葛巻町');
-	    	addOption(thirdSelect, '九戸村', '九戸村');
-	    	addOption(thirdSelect, '雫石町', '雫石町');
-	    	addOption(thirdSelect, '紫波町', '紫波町');
-	    	addOption(thirdSelect, '住田町', '住田町');
-	    	addOption(thirdSelect, '滝沢市', '滝沢市');
-	    	addOption(thirdSelect, '田野畑村', '田野畑村');
-	    	addOption(thirdSelect, '遠野市', '遠野市');
-	    	addOption(thirdSelect, '西和賀町', '西和賀町');
-	    	addOption(thirdSelect, '二戸市', '二戸市');
-	    	addOption(thirdSelect, '野田村', '野田村');
-	    	addOption(thirdSelect, '八幡平市', '八幡平市');
-	    	addOption(thirdSelect, '花巻市', '花巻市');
-	    	addOption(thirdSelect, '平泉町', '平泉町');
-	    	addOption(thirdSelect, '洋野町', '洋野町');
-	    	addOption(thirdSelect, '普代村', '普代村');
-	    	addOption(thirdSelect, '宮古市', '宮古市');
-	    	addOption(thirdSelect, '盛岡市', '盛岡市');
-	    	addOption(thirdSelect, '矢巾町', '矢巾町');
-	    	addOption(thirdSelect, '山田町', '山田町');
-	    	addOption(thirdSelect, '陸前高田市', '陸前高田市');
-	    }else if (selectedValue2 === '秋田') {
-	    	addOption(thirdSelect, '市区町村を選択', '');
-	    	addOption(thirdSelect, '秋田市', '秋田市');
-	    	addOption(thirdSelect, '井川町', '井川町');
-	    	addOption(thirdSelect, '羽後町', '羽後町');
-	    	addOption(thirdSelect, '大潟村', '大潟村');
-	    	addOption(thirdSelect, '大館市', '大館市');
-	    	addOption(thirdSelect, '男鹿市', '男鹿市');
-	    	addOption(thirdSelect, '鹿角市', '鹿角市');
-	    	addOption(thirdSelect, '潟上市', '潟上市');
-	    	addOption(thirdSelect, '上小阿仁村', '上小阿仁村');
-	    	addOption(thirdSelect, '北秋田市', '北秋田市');
-	    	addOption(thirdSelect, '小坂町', '小坂町');
-	    	addOption(thirdSelect, '五城目町', '五城目町');
-	    	addOption(thirdSelect, '仙北市', '仙北市');
-	    	addOption(thirdSelect, '大仙市', '大仙市');
-	    	addOption(thirdSelect, 'にかほ市', 'にかほ市');
-	    	addOption(thirdSelect, '能代市', '能代市');
-	    	addOption(thirdSelect, '八郎潟町', '八郎潟町');
-	    	addOption(thirdSelect, '八峰町', '八峰町');
-	    	addOption(thirdSelect, '東成瀬村', '東成瀬村');
-	    	addOption(thirdSelect, '藤里町', '藤里町');
-	    	addOption(thirdSelect, '美郷町', '美郷町');
-	    	addOption(thirdSelect, '三種町', '三種町');
-	    	addOption(thirdSelect, '湯沢市', '湯沢市');
-	    	addOption(thirdSelect, '由利本荘市', '由利本荘市');
-	    	addOption(thirdSelect, '横手市', '横手市');
-	    }else if (selectedValue2 === '宮城') {
-	    	addOption(thirdSelect, '市区町村を選択', '');
-	    	addOption(thirdSelect, '石巻市', '石巻市');
-	    	addOption(thirdSelect, '岩沼市', '岩沼市');
-	    	addOption(thirdSelect, '大河原町', '大河原町');
-	    	addOption(thirdSelect, '大崎市', '大崎市');
-	    	addOption(thirdSelect, '大郷町', '大郷町');
-	    	addOption(thirdSelect, '大衡村', '大衡村');
-	    	addOption(thirdSelect, '女川町', '女川町');
-	    	addOption(thirdSelect, '角田市', '角田市');
-	    	addOption(thirdSelect, '加美町', '加美町');
-	    	addOption(thirdSelect, '川崎町', '川崎町');
-	    	addOption(thirdSelect, '栗原市', '栗原市');
-	    	addOption(thirdSelect, '気仙沼市', '気仙沼市');
-	    	addOption(thirdSelect, '蔵王町', '蔵王町');
-	    	addOption(thirdSelect, '塩釜市', '塩釜市');
-	    	addOption(thirdSelect, '色麻町', '色麻町');
-	    	addOption(thirdSelect, '七ケ宿町', '七ケ宿町');
-	    	addOption(thirdSelect, '七ケ浜町', '七ケ浜町');
-	    	addOption(thirdSelect, '柴田町', '柴田町');
-	    	addOption(thirdSelect, '白石市', '白石市');
-	    	addOption(thirdSelect, '仙台市', '仙台市');
-	    	addOption(thirdSelect, '大和町', '大和町');
-	    	addOption(thirdSelect, '多賀城市', '多賀城市');
-	    	addOption(thirdSelect, '富谷市', '富谷市');
-	    	addOption(thirdSelect, '登米市', '登米市');
-	    	addOption(thirdSelect, '名取市', '名取市');
-	    	addOption(thirdSelect, '東松島市', '東松島市');
-	    	addOption(thirdSelect, '松島町', '松島町');
-	    	addOption(thirdSelect, '丸森町', '丸森町');
-	    	addOption(thirdSelect, '美里町', '美里町');
-	    	addOption(thirdSelect, '南三陸町', '南三陸町');
-	    	addOption(thirdSelect, '村田町', '村田町');
-	    	addOption(thirdSelect, '山元町', '山元町');
-	    	addOption(thirdSelect, '利府町', '利府町');
-	    	addOption(thirdSelect, '涌谷町', '涌谷町');
-	    	addOption(thirdSelect, '亘理町', '亘理町');
-	    }else if (selectedValue2 === '山形') {
-	    	addOption(thirdSelect, '市区町村を選択', '');
-	    	addOption(thirdSelect, '朝日町', '朝日町');
-	    	addOption(thirdSelect, '飯豊町', '飯豊町');
-	    	addOption(thirdSelect, '尾花沢市', '尾花沢市');
-	    	addOption(thirdSelect, '大江町', '大江町');
-	    	addOption(thirdSelect, '大石田町', '大石田町');
-	    	addOption(thirdSelect, '大蔵村', '大蔵村');
-	    	addOption(thirdSelect, '小国町', '小国町');
-	    	addOption(thirdSelect, '上山市', '上山市');
-	    	addOption(thirdSelect, '河北町', '河北町');
-	    	addOption(thirdSelect, '金山町', '金山町');
-	    	addOption(thirdSelect, '川西町', '川西町');
-	    	addOption(thirdSelect, '酒田市', '酒田市');
-	    	addOption(thirdSelect, '寒河江市', '寒河江市');
-	    	addOption(thirdSelect, '鮭川村', '鮭川村');
-	    	addOption(thirdSelect, '庄内町', '庄内町');
-	    	addOption(thirdSelect, '新庄市', '新庄市');
-	    	addOption(thirdSelect, '白鷹町', '白鷹町');
-	    	addOption(thirdSelect, '高畠町', '高畠町');
-	    	addOption(thirdSelect, '鶴岡市', '鶴岡市');
-	    	addOption(thirdSelect, '天童市', '天童市');
-	    	addOption(thirdSelect, '戸沢村', '戸沢村');
-	    	addOption(thirdSelect, '長井市', '長井市');
-	    	addOption(thirdSelect, '南陽市', '南陽市');
-	    	addOption(thirdSelect, '中山町', '中山町');
-	    	addOption(thirdSelect, '西川町', '西川町');
-	    	addOption(thirdSelect, '東根市', '東根市');
-	    	addOption(thirdSelect, '舟形町', '舟形町');
-	    	addOption(thirdSelect, '真室川町', '真室川町');
-	    	addOption(thirdSelect, '三川町', '三川町');
-	    	addOption(thirdSelect, '村山市', '村山市');
-	    	addOption(thirdSelect, '最上町', '最上町');
-	    	addOption(thirdSelect, '山形市', '山形市');
-	    	addOption(thirdSelect, '山辺町', '山辺町');
-	    	addOption(thirdSelect, '遊佐町', '遊佐町');
-	    	addOption(thirdSelect, '米沢市', '米沢市');
-	    }else if (selectedValue2 === '福島') {
-	    	addOption(thirdSelect, '市区町村を選択', '');
+		    if (selectedValue2 === '青森') {
+		    	addOption(thirdSelect, '市区町村を選択', '');
+		    	addOption(thirdSelect, '青森市', '青森市');
+		    	addOption(thirdSelect, '鰺ケ沢町', '鰺ケ沢町');
+		    	addOption(thirdSelect, '今別町', '今別町');
+		    	addOption(thirdSelect, '田舎館村', '田舎館村');
+		    	addOption(thirdSelect, '板柳町', '板柳町');
+		    	addOption(thirdSelect, '大鰐町', '大鰐町');
+		    	addOption(thirdSelect, '大間町', '大間町');
+		    	addOption(thirdSelect, 'おいらせ町', 'おいらせ町');
+		    	addOption(thirdSelect, '風間浦村', '風間浦村');
+		    	addOption(thirdSelect, '黒石市', '黒石市');
+		    	addOption(thirdSelect, '五所川原市', '五所川原市');
+		    	addOption(thirdSelect, '五戸町', '五戸町');
+		    	addOption(thirdSelect, '佐井村', '佐井村');
+		    	addOption(thirdSelect, '三戸町', '三戸町');
+		    	addOption(thirdSelect, '七戸町', '七戸町');
+		    	addOption(thirdSelect, '新郷村', '新郷村');
+		    	addOption(thirdSelect, '外ヶ浜町', '外ヶ浜町');
+		    	addOption(thirdSelect, '田子町', '田子町');
+		    	addOption(thirdSelect, 'つがる市', 'つがる市');
+		    	addOption(thirdSelect, '鶴田町', '鶴田町');
+		    	addOption(thirdSelect, '十和田市', '十和田市');
+		    	addOption(thirdSelect, '東北町', '東北町');
+		    	addOption(thirdSelect, '中泊町', '中泊町');
+		    	addOption(thirdSelect, '南部町', '南部町');
+		    	addOption(thirdSelect, '西目屋村', '西目屋村');
+		    	addOption(thirdSelect, '野辺地町', '野辺地町');
+		    	addOption(thirdSelect, '八戸市', '八戸市');
+		    	addOption(thirdSelect, '階上町', '階上町');
+		    	addOption(thirdSelect, '弘前市', '弘前市');
+		    	addOption(thirdSelect, '平川市', '平川市');
+		    	addOption(thirdSelect, '平内町', '平内町');
+		    	addOption(thirdSelect, '東通村', '東通村');
+		    	addOption(thirdSelect, '深浦町', '深浦町');
+		    	addOption(thirdSelect, '藤崎町', '藤崎町');
+		    	addOption(thirdSelect, '三沢市', '三沢市');
+		    	addOption(thirdSelect, 'むつ市', 'むつ市');
+		    	addOption(thirdSelect, '蓬田村', '蓬田村');
+		    	addOption(thirdSelect, '横浜町', '横浜町');
+		    	addOption(thirdSelect, '六戸町', '六戸町');
+		    	addOption(thirdSelect, '六ケ所村', '六ケ所村');
+		    }else if (selectedValue2 === '岩手') {
+		    	addOption(thirdSelect, '市区町村を選択', '');
+		    	addOption(thirdSelect, '一関市', '一関市');
+		    	addOption(thirdSelect, '一戸町', '一戸町');
+		    	addOption(thirdSelect, '岩泉町', '岩泉町');
+		    	addOption(thirdSelect, '岩手町', '岩手町');
+		    	addOption(thirdSelect, '奥州市', '奥州市');
+		    	addOption(thirdSelect, '大槌町', '大槌町');
+		    	addOption(thirdSelect, '大船渡市', '大船渡市');
+		    	addOption(thirdSelect, '金ケ崎町', '金ケ崎町');
+		    	addOption(thirdSelect, '釜石市', '釜石市');
+		    	addOption(thirdSelect, '軽米町', '軽米町');
+		    	addOption(thirdSelect, '北上市', '北上市');
+		    	addOption(thirdSelect, '久慈市', '久慈市');
+		    	addOption(thirdSelect, '葛巻町', '葛巻町');
+		    	addOption(thirdSelect, '九戸村', '九戸村');
+		    	addOption(thirdSelect, '雫石町', '雫石町');
+		    	addOption(thirdSelect, '紫波町', '紫波町');
+		    	addOption(thirdSelect, '住田町', '住田町');
+		    	addOption(thirdSelect, '滝沢市', '滝沢市');
+		    	addOption(thirdSelect, '田野畑村', '田野畑村');
+		    	addOption(thirdSelect, '遠野市', '遠野市');
+		    	addOption(thirdSelect, '西和賀町', '西和賀町');
+		    	addOption(thirdSelect, '二戸市', '二戸市');
+		    	addOption(thirdSelect, '野田村', '野田村');
+		    	addOption(thirdSelect, '八幡平市', '八幡平市');
+		    	addOption(thirdSelect, '花巻市', '花巻市');
+		    	addOption(thirdSelect, '平泉町', '平泉町');
+		    	addOption(thirdSelect, '洋野町', '洋野町');
+		    	addOption(thirdSelect, '普代村', '普代村');
+		    	addOption(thirdSelect, '宮古市', '宮古市');
+		    	addOption(thirdSelect, '盛岡市', '盛岡市');
+		    	addOption(thirdSelect, '矢巾町', '矢巾町');
+		    	addOption(thirdSelect, '山田町', '山田町');
+		    	addOption(thirdSelect, '陸前高田市', '陸前高田市');
+		    }else if (selectedValue2 === '秋田') {
+		    	addOption(thirdSelect, '市区町村を選択', '');
+		    	addOption(thirdSelect, '秋田市', '秋田市');
+		    	addOption(thirdSelect, '井川町', '井川町');
+		    	addOption(thirdSelect, '羽後町', '羽後町');
+		    	addOption(thirdSelect, '大潟村', '大潟村');
+		    	addOption(thirdSelect, '大館市', '大館市');
+		    	addOption(thirdSelect, '男鹿市', '男鹿市');
+		    	addOption(thirdSelect, '鹿角市', '鹿角市');
+		    	addOption(thirdSelect, '潟上市', '潟上市');
+		    	addOption(thirdSelect, '上小阿仁村', '上小阿仁村');
+		    	addOption(thirdSelect, '北秋田市', '北秋田市');
+		    	addOption(thirdSelect, '小坂町', '小坂町');
+		    	addOption(thirdSelect, '五城目町', '五城目町');
+		    	addOption(thirdSelect, '仙北市', '仙北市');
+		    	addOption(thirdSelect, '大仙市', '大仙市');
+		    	addOption(thirdSelect, 'にかほ市', 'にかほ市');
+		    	addOption(thirdSelect, '能代市', '能代市');
+		    	addOption(thirdSelect, '八郎潟町', '八郎潟町');
+		    	addOption(thirdSelect, '八峰町', '八峰町');
+		    	addOption(thirdSelect, '東成瀬村', '東成瀬村');
+		    	addOption(thirdSelect, '藤里町', '藤里町');
+		    	addOption(thirdSelect, '美郷町', '美郷町');
+		    	addOption(thirdSelect, '三種町', '三種町');
+		    	addOption(thirdSelect, '湯沢市', '湯沢市');
+		    	addOption(thirdSelect, '由利本荘市', '由利本荘市');
+		    	addOption(thirdSelect, '横手市', '横手市');
+		    }else if (selectedValue2 === '宮城') {
+		    	addOption(thirdSelect, '市区町村を選択', '');
+		    	addOption(thirdSelect, '石巻市', '石巻市');
+		    	addOption(thirdSelect, '岩沼市', '岩沼市');
+		    	addOption(thirdSelect, '大河原町', '大河原町');
+		    	addOption(thirdSelect, '大崎市', '大崎市');
+		    	addOption(thirdSelect, '大郷町', '大郷町');
+		    	addOption(thirdSelect, '大衡村', '大衡村');
+		    	addOption(thirdSelect, '女川町', '女川町');
+		    	addOption(thirdSelect, '角田市', '角田市');
+		    	addOption(thirdSelect, '加美町', '加美町');
+		    	addOption(thirdSelect, '川崎町', '川崎町');
+		    	addOption(thirdSelect, '栗原市', '栗原市');
+		    	addOption(thirdSelect, '気仙沼市', '気仙沼市');
+		    	addOption(thirdSelect, '蔵王町', '蔵王町');
+		    	addOption(thirdSelect, '塩釜市', '塩釜市');
+		    	addOption(thirdSelect, '色麻町', '色麻町');
+		    	addOption(thirdSelect, '七ケ宿町', '七ケ宿町');
+		    	addOption(thirdSelect, '七ケ浜町', '七ケ浜町');
+		    	addOption(thirdSelect, '柴田町', '柴田町');
+		    	addOption(thirdSelect, '白石市', '白石市');
+		    	addOption(thirdSelect, '仙台市', '仙台市');
+		    	addOption(thirdSelect, '大和町', '大和町');
+		    	addOption(thirdSelect, '多賀城市', '多賀城市');
+		    	addOption(thirdSelect, '富谷市', '富谷市');
+		    	addOption(thirdSelect, '登米市', '登米市');
+		    	addOption(thirdSelect, '名取市', '名取市');
+		    	addOption(thirdSelect, '東松島市', '東松島市');
+		    	addOption(thirdSelect, '松島町', '松島町');
+		    	addOption(thirdSelect, '丸森町', '丸森町');
+		    	addOption(thirdSelect, '美里町', '美里町');
+		    	addOption(thirdSelect, '南三陸町', '南三陸町');
+		    	addOption(thirdSelect, '村田町', '村田町');
+		    	addOption(thirdSelect, '山元町', '山元町');
+		    	addOption(thirdSelect, '利府町', '利府町');
+		    	addOption(thirdSelect, '涌谷町', '涌谷町');
+		    	addOption(thirdSelect, '亘理町', '亘理町');
+		    }else if (selectedValue2 === '山形') {
+		    	addOption(thirdSelect, '市区町村を選択', '');
+		    	addOption(thirdSelect, '朝日町', '朝日町');
+		    	addOption(thirdSelect, '飯豊町', '飯豊町');
+		    	addOption(thirdSelect, '尾花沢市', '尾花沢市');
+		    	addOption(thirdSelect, '大江町', '大江町');
+		    	addOption(thirdSelect, '大石田町', '大石田町');
+		    	addOption(thirdSelect, '大蔵村', '大蔵村');
+		    	addOption(thirdSelect, '小国町', '小国町');
+		    	addOption(thirdSelect, '上山市', '上山市');
+		    	addOption(thirdSelect, '河北町', '河北町');
+		    	addOption(thirdSelect, '金山町', '金山町');
+		    	addOption(thirdSelect, '川西町', '川西町');
+		    	addOption(thirdSelect, '酒田市', '酒田市');
+		    	addOption(thirdSelect, '寒河江市', '寒河江市');
+		    	addOption(thirdSelect, '鮭川村', '鮭川村');
+		    	addOption(thirdSelect, '庄内町', '庄内町');
+		    	addOption(thirdSelect, '新庄市', '新庄市');
+		    	addOption(thirdSelect, '白鷹町', '白鷹町');
+		    	addOption(thirdSelect, '高畠町', '高畠町');
+		    	addOption(thirdSelect, '鶴岡市', '鶴岡市');
+		    	addOption(thirdSelect, '天童市', '天童市');
+		    	addOption(thirdSelect, '戸沢村', '戸沢村');
+		    	addOption(thirdSelect, '長井市', '長井市');
+		    	addOption(thirdSelect, '南陽市', '南陽市');
+		    	addOption(thirdSelect, '中山町', '中山町');
+		    	addOption(thirdSelect, '西川町', '西川町');
+		    	addOption(thirdSelect, '東根市', '東根市');
+		    	addOption(thirdSelect, '舟形町', '舟形町');
+		    	addOption(thirdSelect, '真室川町', '真室川町');
+		    	addOption(thirdSelect, '三川町', '三川町');
+		    	addOption(thirdSelect, '村山市', '村山市');
+		    	addOption(thirdSelect, '最上町', '最上町');
+		    	addOption(thirdSelect, '山形市', '山形市');
+		    	addOption(thirdSelect, '山辺町', '山辺町');
+		    	addOption(thirdSelect, '遊佐町', '遊佐町');
+		    	addOption(thirdSelect, '米沢市', '米沢市');
+		    }else if (selectedValue2 === '福島') {
+		    addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '会津坂下町', '会津坂下町');
 	    	addOption(thirdSelect, '会津美里町', '会津美里町');
 	    	addOption(thirdSelect, '会津若松市', '会津若松市');
@@ -965,7 +1038,7 @@ document.getElementById('thirdSelect').addEventListener('change', function(event
 	    	 addOption(thirdSelect, '美浜町', '美浜町');
 	    	 addOption(thirdSelect, '若狭町', '若狭町');
 	     }else if (selectedValue2 === '山梨') {
-			 addOption(thirdSelect, '市区町村を選択', '');
+		     addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '市川三郷町', '市川三郷町');
 	    	 addOption(thirdSelect, '上野原市', '上野原市');
 	    	 addOption(thirdSelect, '大月市', '大月市');
@@ -994,7 +1067,7 @@ document.getElementById('thirdSelect').addEventListener('change', function(event
 	    	 addOption(thirdSelect, '山中湖村', '山中湖村');
 	    	 addOption(thirdSelect, '山梨市', '山梨市');
 	     }else if (selectedValue2 === '長野') {
-	    	 addOption(thirdSelect, '市区町村を選択', '');
+		     addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '青木村', '青木村');
 	    	 addOption(thirdSelect, '上松町', '上松町');
 	    	 addOption(thirdSelect, '朝日村', '朝日村');
@@ -1992,11 +2065,11 @@ document.getElementById('thirdSelect').addEventListener('change', function(event
 
 	     }
 
+	  });
 
-});
-
-
-
+document.getElementById('secondSelect').style.display = 'none';
+document.getElementById('thirdSelect').style.display = 'none';
+document.getElementById('area_button').style.display = 'none';
 
   //select関数
   function addOption(selectElement, text, value) {
@@ -2004,4 +2077,4 @@ document.getElementById('thirdSelect').addEventListener('change', function(event
     option.textContent = text;
     option.value = value;
     selectElement.appendChild(option);
-}
+  }
