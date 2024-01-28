@@ -46,3 +46,7 @@ input.toggle:checked ~ .message{
 	padding: 30px;
 	text-align: center;
 }
+#area_button {
+    margin: 0 auto;
+    display: block;
+}
