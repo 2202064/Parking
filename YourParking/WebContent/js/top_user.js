@@ -1,3 +1,6 @@
+document.getElementById('secondSelect').style.display = 'none';
+document.getElementById('thirdSelect').style.display = 'none';
+document.getElementById('area_button').style.display = 'none';
 document.getElementById('firstSelect').addEventListener('change', function(event) {
     const selectedValue = event.target.value;
 
@@ -12,7 +15,7 @@ document.getElementById('firstSelect').addEventListener('change', function(event
 
       secondSelect.style.display = 'none';
       thirdSelect.style.display = 'block';
-
+  		addOption(thirdSelect, '市区町村を選択', '');
 	    addOption(thirdSelect, '愛別町', '愛別町');
 	  	addOption(thirdSelect, '赤井川村', '赤井川村');
 	  	addOption(thirdSelect, '赤平市', '赤平市');
@@ -198,7 +201,7 @@ document.getElementById('firstSelect').addEventListener('change', function(event
       thirdSelect.style.display = 'none';
   	if (selectedValue!==""){
 	      secondSelect.style.display = 'block';
-	}else if(selectedValue==""){
+	}else {
 		secondSelect.style.display = 'none';
 	}
     if (selectedValue === '東北') {
@@ -277,17 +280,34 @@ document.getElementById('firstSelect').addEventListener('change', function(event
 
 
 document.getElementById('secondSelect').addEventListener('change', function(event2) {
+document.getElementById('thirdSelect').addEventListener('change', function(event2) {
+        const selectedValue2 = event2.target.value;
+        const area_button = document.getElementById('area_button');
 
+        // ダミークリア
+        const thirdSelect = document.getElementById('thirdSelect');
+
+        if (selectedValue2 !== "") {
+            area_button.style.display = 'block';
+        } else {
+            area_button.style.display = 'none';
+        }
+    });
     const selectedValue2 = event2.target.value;
     // ダミークリア
     const thirdSelect = document.getElementById('thirdSelect');
+    const area_button = document.getElementById('area_button');
     thirdSelect.innerHTML = '';
     	if (selectedValue2!==""){
     	      thirdSelect.style.display = 'block';
-    	}else if(selectedValue2==""){
+    	}else {
     		thirdSelect.style.display = 'none';
     	}
+
+
+
 	    if (selectedValue2 === '青森') {
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '青森市', '青森市');
 	    	addOption(thirdSelect, '鰺ケ沢町', '鰺ケ沢町');
 	    	addOption(thirdSelect, '今別町', '今別町');
@@ -329,6 +349,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '六戸町', '六戸町');
 	    	addOption(thirdSelect, '六ケ所村', '六ケ所村');
 	    }else if (selectedValue2 === '岩手') {
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '一関市', '一関市');
 	    	addOption(thirdSelect, '一戸町', '一戸町');
 	    	addOption(thirdSelect, '岩泉町', '岩泉町');
@@ -363,6 +384,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '山田町', '山田町');
 	    	addOption(thirdSelect, '陸前高田市', '陸前高田市');
 	    }else if (selectedValue2 === '秋田') {
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '秋田市', '秋田市');
 	    	addOption(thirdSelect, '井川町', '井川町');
 	    	addOption(thirdSelect, '羽後町', '羽後町');
@@ -389,6 +411,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '由利本荘市', '由利本荘市');
 	    	addOption(thirdSelect, '横手市', '横手市');
 	    }else if (selectedValue2 === '宮城') {
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '石巻市', '石巻市');
 	    	addOption(thirdSelect, '岩沼市', '岩沼市');
 	    	addOption(thirdSelect, '大河原町', '大河原町');
@@ -425,6 +448,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '涌谷町', '涌谷町');
 	    	addOption(thirdSelect, '亘理町', '亘理町');
 	    }else if (selectedValue2 === '山形') {
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '朝日町', '朝日町');
 	    	addOption(thirdSelect, '飯豊町', '飯豊町');
 	    	addOption(thirdSelect, '尾花沢市', '尾花沢市');
@@ -461,6 +485,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '遊佐町', '遊佐町');
 	    	addOption(thirdSelect, '米沢市', '米沢市');
 	    }else if (selectedValue2 === '福島') {
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '会津坂下町', '会津坂下町');
 	    	addOption(thirdSelect, '会津美里町', '会津美里町');
 	    	addOption(thirdSelect, '会津若松市', '会津若松市');
@@ -522,6 +547,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '湯川村', '湯川村');
 	    }
 	    else if (selectedValue2 === '東京') {
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '千代田区', '千代田区');
 	        addOption(thirdSelect, '中央区', '中央区');
 	        addOption(thirdSelect, '港区', '港区');
@@ -585,6 +611,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	        addOption(thirdSelect, '青ヶ島村', '青ヶ島村');
 	        addOption(thirdSelect, '小笠原村', '小笠原村');
 	    }else if(selectedValue2 === '茨城'){
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '水戸市', '水戸市');
 	        addOption(thirdSelect, '日立市', '日立市');
 	        addOption(thirdSelect, '土浦市', '土浦市');
@@ -629,6 +656,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	        addOption(thirdSelect, '境町', '境町');
 	        addOption(thirdSelect, '利根町', '利根町');
 	    } else if(selectedValue2 === '埼玉'){
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	        addOption(thirdSelect, '上尾市', '上尾市');
 	        addOption(thirdSelect, '朝霞市', '朝霞市');
 	        addOption(thirdSelect, '伊奈町', '伊奈町');
@@ -693,6 +721,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	        addOption(thirdSelect, '和光市', '和光市');
 	        addOption(thirdSelect, '蕨市', '蕨市');
 	    } else if(selectedValue2 === '栃木'){
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '足利市', '足利市');
 	    	addOption(thirdSelect, '市貝町', '市貝町');
 	    	addOption(thirdSelect, '宇都宮市', '宇都宮市');
@@ -719,6 +748,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '茂木町', '茂木町');
 	    	addOption(thirdSelect, '矢板市', '矢板市');
 	    } else if(selectedValue2 === '千葉'){
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '旭市', '旭市');
 	    	addOption(thirdSelect, '我孫子市', '我孫子市');
 	    	addOption(thirdSelect, 'いすみ市', 'いすみ市');
@@ -774,6 +804,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '横芝光町', '横芝光町');
 	    	addOption(thirdSelect, '四街道市', '四街道市');
 	    }else if(selectedValue2 === '群馬'){
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '安中市', '安中市');
 	    	addOption(thirdSelect, '伊勢崎市', '伊勢崎市');
 	    	addOption(thirdSelect, '板倉町', '板倉町');
@@ -810,6 +841,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '明和町', '明和町');
 	    	addOption(thirdSelect, '吉岡町', '吉岡町');
 	    }else if(selectedValue2 === '神奈川'){
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '愛川町', '愛川町');
 	    	addOption(thirdSelect, '厚木市', '厚木市');
 	    	addOption(thirdSelect, '綾瀬市', '綾瀬市');
@@ -844,6 +876,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '横須賀市', '横須賀市');
 	    	addOption(thirdSelect, '横浜市', '横浜市');
 	    }else if(selectedValue2 === '新潟'){
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '阿賀町', '阿賀町');
 	    	addOption(thirdSelect, '阿賀野市', '阿賀野市');
 	    	addOption(thirdSelect, '粟島浦村', '粟島浦村');
@@ -875,6 +908,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '弥彦村', '弥彦村');
 	    	addOption(thirdSelect, '湯沢町', '湯沢町');
 	    }else if(selectedValue2 === '富山'){
+	    	addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '朝日町', '朝日町');
 	    	addOption(thirdSelect, '射水市', '射水市');
 	    	addOption(thirdSelect, '魚津市', '魚津市');
@@ -891,6 +925,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '氷見市', '氷見市');
 	    	addOption(thirdSelect, '舟橋村', '舟橋村');
 	     }else if (selectedValue2 === '石川') {
+		    addOption(thirdSelect, '市区町村を選択', '');
 	    	addOption(thirdSelect, '穴水町', '穴水町');
 	    	addOption(thirdSelect, '内灘町', '内灘町');
 	    	addOption(thirdSelect, '加賀市', '加賀市');
@@ -911,6 +946,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	addOption(thirdSelect, '宝達志水町', '宝達志水町');
 	    	addOption(thirdSelect, '輪島市', '輪島市');
 	     }else if (selectedValue2 === '福井') {
+		    addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, 'あわら市', 'あわら市');
 	    	 addOption(thirdSelect, '池田町', '池田町');
 	    	 addOption(thirdSelect, '永平寺町', '永平寺町');
@@ -929,6 +965,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '美浜町', '美浜町');
 	    	 addOption(thirdSelect, '若狭町', '若狭町');
 	     }else if (selectedValue2 === '山梨') {
+			 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '市川三郷町', '市川三郷町');
 	    	 addOption(thirdSelect, '上野原市', '上野原市');
 	    	 addOption(thirdSelect, '大月市', '大月市');
@@ -957,6 +994,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '山中湖村', '山中湖村');
 	    	 addOption(thirdSelect, '山梨市', '山梨市');
 	     }else if (selectedValue2 === '長野') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '青木村', '青木村');
 	    	 addOption(thirdSelect, '上松町', '上松町');
 	    	 addOption(thirdSelect, '朝日村', '朝日村');
@@ -1036,6 +1074,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '山ノ内町', '山ノ内町');
 
 	     }else if (selectedValue2 === '岐阜') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '安八町', '安八町');
 	    	 addOption(thirdSelect, '池田町', '池田町');
 	    	 addOption(thirdSelect, '揖斐川町', '揖斐川町');
@@ -1080,6 +1119,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '輪之内町', '輪之内町');
 
 	     }else if (selectedValue2 === '静岡') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '熱海市', '熱海市');
 	    	 addOption(thirdSelect, '伊豆市', '伊豆市');
 	    	 addOption(thirdSelect, '伊豆の国市', '伊豆の国市');
@@ -1117,6 +1157,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '吉田町', '吉田町');
 
 	     }else if (selectedValue2 === '愛知') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect,'愛西市','愛西市');
 	    	 addOption(thirdSelect,'阿久比町','阿久比町');
 	    	 addOption(thirdSelect,'あま市','あま市');
@@ -1173,6 +1214,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect,'弥富市','弥富市');
 
 	     }else if (selectedValue2 === '三重') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '朝日町', '朝日町');
 	    	 addOption(thirdSelect, '伊賀市', '伊賀市');
 	    	 addOption(thirdSelect, '伊勢市', '伊勢市');
@@ -1204,6 +1246,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '度会町', '度会町');
 
 	     }else if (selectedValue2 === '滋賀') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '愛荘町', '愛荘町');
 	    	 addOption(thirdSelect, '近江八幡市', '近江八幡市');
 	    	 addOption(thirdSelect, '大津市', '大津市');
@@ -1226,6 +1269,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 
 
 	     }else if (selectedValue2 === '京都') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '綾部市', '綾部市');
 	    	 addOption(thirdSelect, '井手町', '井手町');
 	    	 addOption(thirdSelect, '伊根町', '伊根町');
@@ -1255,6 +1299,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 
 
 	     }else if (selectedValue2 === '大阪') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '池田市', '池田市');
 	    	 addOption(thirdSelect, '泉大津市', '泉大津市');
 	    	 addOption(thirdSelect, '泉佐野市', '泉佐野市');
@@ -1300,6 +1345,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '八尾市', '八尾市');
 
 	    	 }else if (selectedValue2 === '兵庫') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '相生市', '相生市');
 	    	 addOption(thirdSelect, '明石市', '明石市');
 	    	 addOption(thirdSelect, '赤穂市', '赤穂市');
@@ -1344,6 +1390,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 
 
 	     }else if (selectedValue2 === '奈良') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '明日香村', '明日香村');
 	    	 addOption(thirdSelect, '安堵町', '安堵町');
 	    	 addOption(thirdSelect, '斑鳩町', '斑鳩町');
@@ -1385,6 +1432,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '吉野町', '吉野町');
 
 	     }else if (selectedValue2 === '和歌山') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '有田市', '有田市');
 	    	 addOption(thirdSelect, '有田川町', '有田川町');
 	    	 addOption(thirdSelect, '印南町', '印南町');
@@ -1417,6 +1465,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '和歌山市', '和歌山市');
 
 	     }else if (selectedValue2 === '鳥取') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '岩美町', '岩美町');
 	    	 addOption(thirdSelect, '倉吉市', '倉吉市');
 	    	 addOption(thirdSelect, '江府町', '江府町');
@@ -1438,6 +1487,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '若桜町', '若桜町');
 
 	     }else if (selectedValue2 === '島根') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '飯南町', '飯南町');
 	    	 addOption(thirdSelect, '海士町', '海士町');
 	    	 addOption(thirdSelect, '出雲市', '出雲市');
@@ -1459,6 +1509,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '吉賀町', '吉賀町');
 
 	     }else if (selectedValue2 === '岡山') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '赤磐市', '赤磐市');
 	    	 addOption(thirdSelect, '浅口市', '浅口市');
 	    	 addOption(thirdSelect, '井原市', '井原市');
@@ -1488,6 +1539,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '和気町', '和気町');
 
 	     }else if (selectedValue2 === '広島') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '安芸太田町', '安芸太田町');
 	    	 addOption(thirdSelect, '安芸高田市', '安芸高田市');
 	    	 addOption(thirdSelect, '江田島市', '江田島市');
@@ -1513,6 +1565,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '三次市', '三次市');
 
 	     }else if (selectedValue2 === '山口') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '阿武町', '阿武町');
 	    	 addOption(thirdSelect, '岩国市', '岩国市');
 	    	 addOption(thirdSelect, '宇部市', '宇部市');
@@ -1534,6 +1587,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '和木町', '和木町');
 
 	     }else if (selectedValue2 === '香川') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '綾川町', '綾川町');
 	    	 addOption(thirdSelect, '宇多津町', '宇多津町');
 	    	 addOption(thirdSelect, '観音寺市', '観音寺市');
@@ -1553,6 +1607,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '三豊市', '三豊市');
 
 	     }else if (selectedValue2 === '徳島') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '藍住町', '藍住町');
 	    	 addOption(thirdSelect, '阿南市', '阿南市');
 	    	 addOption(thirdSelect, '阿波市', '阿波市');
@@ -1579,6 +1634,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '吉野川市', '吉野川市');
 
 	     }else if (selectedValue2 === '愛媛') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '愛南町', '愛南町');
 	    	 addOption(thirdSelect, '伊方町', '伊方町');
 	    	 addOption(thirdSelect, '今治市', '今治市');
@@ -1601,6 +1657,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '八幡浜市', '八幡浜市');
 
 	     }else if (selectedValue2 === '高知') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '安芸市', '安芸市');
 	    	 addOption(thirdSelect, 'いの町', 'いの町');
 	    	 addOption(thirdSelect, '馬路村', '馬路村');
@@ -1637,6 +1694,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '梼原町', '梼原町');
 
 	     }else if (selectedValue2 === '大分') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '宇佐市', '宇佐市');
 	    	 addOption(thirdSelect, '臼杵市', '臼杵市');
 	    	 addOption(thirdSelect, '大分市', '大分市');
@@ -1657,6 +1715,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '由布市', '由布市');
 
 	     }else if (selectedValue2 === '福岡') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '赤村', '赤村');
 	    	 addOption(thirdSelect, '朝倉市', '朝倉市');
 	    	 addOption(thirdSelect, '芦屋町', '芦屋町');
@@ -1719,6 +1778,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '吉富町', '吉富町');
 
 	     }else if (selectedValue2 === '佐賀') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '有田町', '有田町');
 	    	 addOption(thirdSelect, '伊万里市', '伊万里市');
 	    	 addOption(thirdSelect, '嬉野市', '嬉野市');
@@ -1741,6 +1801,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '吉野ヶ里町', '吉野ヶ里町');
 
 	     }else if (selectedValue2 === '宮崎') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '綾町', '綾町');
 	    	 addOption(thirdSelect, 'えびの市', 'えびの市');
 	    	 addOption(thirdSelect, '門川町', '門川町');
@@ -1769,6 +1830,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '諸塚村', '諸塚村');
 
 	     }else if (selectedValue2 === '熊本') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, 'あさぎり町', 'あさぎり町');
 	    	 addOption(thirdSelect, '芦北町', '芦北町');
 	    	 addOption(thirdSelect, '阿蘇市', '阿蘇市');
@@ -1816,6 +1878,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '苓北町', '苓北町');
 
 	     }else if (selectedValue2 === '長崎') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '壱岐市', '壱岐市');
 	    	 addOption(thirdSelect, '諌早市', '諌早市');
 	    	 addOption(thirdSelect, '雲仙市', '雲仙市');
@@ -1839,6 +1902,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '南島原市', '南島原市');
 
 	     }else if (selectedValue2 === '鹿児島') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '姶良市', '姶良市');
 	    	 addOption(thirdSelect, '阿久根市', '阿久根市');
 	    	 addOption(thirdSelect, '天城町', '天城町');
@@ -1883,6 +1947,7 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 	    	 addOption(thirdSelect, '和泊町', '和泊町');
 
 	     }else if (selectedValue2 === '沖縄') {
+	    	 addOption(thirdSelect, '市区町村を選択', '');
 	    	 addOption(thirdSelect, '粟国村', '粟国村');
 	    	 addOption(thirdSelect, '伊江村', '伊江村');
 	    	 addOption(thirdSelect, '石垣市', '石垣市');
@@ -1927,10 +1992,11 @@ document.getElementById('secondSelect').addEventListener('change', function(even
 
 	     }
 
-	  });
 
-document.getElementById('secondSelect').style.display = 'none';
-document.getElementById('thirdSelect').style.display = 'none';
+});
+
+
+
 
   //select関数
   function addOption(selectElement, text, value) {
@@ -1938,4 +2004,4 @@ document.getElementById('thirdSelect').style.display = 'none';
     option.textContent = text;
     option.value = value;
     selectElement.appendChild(option);
-  }
+}
