@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="../tool/header.jsp" %>
+<%@include file="../tool/menu.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>
