@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@include file="../header.html" %>
+<%@include file="../tool/menu.jsp" %>
 <link rel="stylesheet" type="text/css" href="../css/logout.css">
 
 <div class="logout-container">
