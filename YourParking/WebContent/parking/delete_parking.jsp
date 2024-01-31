@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-
+<%@include file="../tool/menu.jsp" %>
 
 <p>削除完了</p>
 
