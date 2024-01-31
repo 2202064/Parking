@@ -1,4 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById('thirdSelect').addEventListener('change', function(event2) {
+        const selectedValue2 = event2.target.value;
+        const area_button = document.getElementById('area_button');
+
+        // ダミークリア
+        const thirdSelect = document.getElementById('thirdSelect');
+
+        if (selectedValue2 !== "") {
+            area_button.style.display = 'block';
+        } else {
+            area_button.style.display = 'none';
+        }
+
+    });
   var overlay = document.getElementById("page-overlay");
 
   document.body.addEventListener("click", function(event) {
@@ -78,8 +92,10 @@ document.getElementById('firstSelect').addEventListener('change', function(event
 
     const secondSelect = document.getElementById('secondSelect');
     const thirdSelect = document.getElementById('thirdSelect');
+    const area_button = document.getElementById('area_button');
     secondSelect.innerHTML = '';
     thirdSelect.innerHTML = '';
+
 
     if (selectedValue === '北海道') {
       //secondSelect非表示
@@ -88,7 +104,7 @@ document.getElementById('firstSelect').addEventListener('change', function(event
       thirdSelect.style.display = 'block';
 
   		addOption(thirdSelect, '市区町村を選択', '');
-      	addOption(thirdSelect, '愛別町', '');
+
       	addOption(thirdSelect, '愛別町', '愛別町');
 	  	addOption(thirdSelect, '赤井川村', '赤井川村');
 	  	addOption(thirdSelect, '赤平市', '赤平市');
@@ -272,8 +288,10 @@ document.getElementById('firstSelect').addEventListener('change', function(event
       //secondSelect表示
       secondSelect.style.display = 'block';
       thirdSelect.style.display = 'none';
+
   	if (selectedValue!==""){
 	      secondSelect.style.display = 'block';
+
 	}else if(selectedValue==""){
 		secondSelect.style.display = 'none';
 	}
