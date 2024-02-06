@@ -1,0 +1,129 @@
+
+#success{
+	color:blue;
+	font-weight:bold;
+	text-align:center;
+	font-size:130%;
+}
+#failed{
+	color:red;
+	font-weight:bold;
+	text-align:center;
+}
+
+    .mau {
+        background-color: gainsboro;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
+
+    form {
+        width: 30%;
+        height: 30%
+        padding: 10%;
+        padding-bottom:3%;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display:block;
+
+    }
+
+    form h1,
+    form p {
+        color: #333;
+        font-weight: 500;
+    }
+
+    form input {
+    display: inline-block;
+    margin-bottom: 10px; /* 適切なマージンを追加 */
+}
+
+    form input[type="password"],form input[type="email"],form input {
+         border: 1px solid #a9a9a9;
+        padding: 15px 10px;
+        width: 70%;
+        margin:  0;
+        margin-left:10%;
+        box-sizing: border-box;
+        border-radius: 5px;
+        outline: none;
+
+
+    }
+
+
+    form input[type="password"]:focus,form input[type="email"]:focus,form input[type="text"] {
+        border-color: #ff9900;
+
+    }
+
+    form input[type="submit"] {
+        border: 0;
+        background: #ff9900;
+        display: block;
+        margin: 20px auto;
+        padding: 15px 10px;
+        width: 90%;
+        outline: none;
+        color: #fff;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+	label[for="HIGH"],label[for="CAR_NAME"],label[for="WIDTH"],label[for="LENGTH"],
+	label[for="WEIGHT"],label[for="pass"]{
+		width:auto;
+		padding-left:2%;
+	}
+	label[for="GROUND_HEIGHT"]{
+		 display: inline-block;
+		 width: 15%;
+		 padding:0;
+		 margin:0;
+		 padding-left:2%;
+
+	}
+    form input[type="submit"]:hover {
+        background-color: #e68a00;
+    }
+
+    form a {
+        color: #333;
+        font-size: 12px;
+        text-decoration: none;
+        display: block;
+        margin-top: 15px;
+    }
+    #info{
+    	padding-top:5%;
+    	text-align:center;
+    }
+    hr{
+    	color:gray;
+    	width:90%
+    }
+    #g_height{
+		margin-left:4%;
+    }
+
+    @media screen and (max-width:650px) {
+
+    form {
+    	width:90%;
+        padding-top:0;
+        padding-bottom:20%;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+        form input[type="submit"] {
+        background:lightskyblue;
+    }
+}
