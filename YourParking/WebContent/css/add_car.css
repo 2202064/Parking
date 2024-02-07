@@ -1,4 +1,14 @@
-
+label::before,label[for="CAR_NAME"]::before,label[for="WIDTH"]::before,label[for="LENGTH"]::before,
+label[for="WEIGHT"]::before,label[for="pass"]::before,label[for="GROUND_HEIGHT"]::before{
+	 content: "";
+     display: inline-block;
+     width: 1%;
+     height: 4%;
+     background-color: blue;
+     margin-right: 4px;
+     vertical-align: middle;
+     z-index: 99;
+	}
 #success{
 	color:blue;
 	font-weight:bold;
@@ -75,19 +85,18 @@
         font-weight: bold;
     }
 
+
+
 	label[for="HIGH"],label[for="CAR_NAME"],label[for="WIDTH"],label[for="LENGTH"],
-	label[for="WEIGHT"],label[for="pass"]{
+	label[for="WEIGHT"],label[for="pass"],label[for="GROUND_HEIGHT"]{
 		width:auto;
-		padding-left:2%;
-	}
-	label[for="GROUND_HEIGHT"]{
-		 display: inline-block;
-		 width: 15%;
-		 padding:0;
-		 margin:0;
-		 padding-left:2%;
+		padding-left:10%;
+		text-align:left;
+
 
 	}
+
+
     form input[type="submit"]:hover {
         background-color: #e68a00;
     }
@@ -106,9 +115,6 @@
     hr{
     	color:gray;
     	width:90%
-    }
-    #g_height{
-		margin-left:4%;
     }
 
     @media screen and (max-width:650px) {
