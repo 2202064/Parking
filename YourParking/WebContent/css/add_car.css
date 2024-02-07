@@ -1,4 +1,4 @@
-label::before,label[for="CAR_NAME"]::before,label[for="WIDTH"]::before,label[for="LENGTH"]::before,
+label[for="HIGH"]::before,label[for="CAR_NAME"]::before,label[for="WIDTH"]::before,label[for="LENGTH"]::before,
 label[for="WEIGHT"]::before,label[for="pass"]::before,label[for="GROUND_HEIGHT"]::before{
 	 content: "";
      display: inline-block;
