@@ -4,12 +4,16 @@ function changeImage(starNumber) {
   starClicked = true;
   for (var i = 1; i <= 5; i++) {
     var starElement = document.getElementById("star" + i);
-    if (i <= starNumber) {
-      starElement.src = "../img/sano" + i + ".png";
-    } else {
+    if(i <= starNumber){
+      starElement.src = "../img/sano.png";
+    }else {
       starElement.src = '../img/star.png';
     }
   }
+  str = document.querySelector('input[name="good"]');
+  str.value = starNumber;
+  console.log(str)
+
 }
 
 var Words = ["死ね", "カス", "しね"];
@@ -23,18 +27,31 @@ function containsInappropriateWords(text) {
   return false;
 }
 
-function checkForInappropriateWords() {
-  var userInput = document.getElementById("comment").value;
-  if (!starClicked) {
-    alert("佐野にしてください！");
+function scoreconfirm(event) {
+  const selectedScore = document.querySelector('input[name="good"]');
+  if (!selectedScore.value) {
+    alert("評価してください");
+    event.preventDefault();
     return false;
   }
-  if (containsInappropriateWords(userInput)) {
+}
+
+const form = document.querySelector('form');
+form.addEventListener('submit', scoreconfirm);
+
+function checkForInappropriateWords() {
+  if (containsInappropriateWords(comment)) {
     alert("不適切な単語が含まれています。投稿できません。");
     return false;
   }
   return true;
 }
+
+let saveCheckbox = document.getElementById('saveCheckbox');
+let msg = document.getElementById('msg');
+let parkingForm = document.getElementById('parkingForm');
+
+parkingForm.style.display = 'none';
 
 function valueChange() {
   if (saveCheckbox.checked) {
@@ -45,7 +62,3 @@ function valueChange() {
     parkingForm.style.display = 'none';
   }
 }
-
-let saveCheckbox = document.getElementById('saveCheckbox');
-let msg = document.getElementById('msg');
-let parkingForm = document.getElementById('parkingForm');
